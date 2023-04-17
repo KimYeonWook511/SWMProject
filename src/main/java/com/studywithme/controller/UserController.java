@@ -61,7 +61,7 @@ public class UserController {
 		
 		if (!confirmuserpw.equals(dto.getUserpw())) {
 			logger.info("비밀번호 불일치");
-			rttr.addFlashAttribute("signResult", "fail_pw");
+			rttr.addFlashAttribute("signupResult", "fail_pw");
 			rttr.addFlashAttribute("dto", dto);
 			return "redirect:/user/signup";
 		}

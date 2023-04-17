@@ -64,28 +64,28 @@
 	</div>
 
 	<script>
-		if ('${joinResult}' == 'fail_id') {
+		if ('${signupResult}' == 'fail_id') {
 			alert("이미 존재하는 아이디입니다.");
 
-		} else if ('${joinResult}' == 'fail_pw') {
+		} else if ('${signupResult}' == 'fail_pw') {
 			alert("비밀번호를 확인해 주세요.");
 
-		} else if ('${joinResult}' == 'empty_id') {
+		} else if ('${signupResult}' == 'empty_userid') {
 			alert("아이디를 입력해 주세요.");
 
-		} else if ('${joinResult}' == 'empty_pw') {
+		} else if ('${signupResult}' == 'empty_userpw') {
 			alert("비밀번호를 입력해 주세요.");
 
-		} else if ('${joinResult}' == 'empty_name') {
+		} else if ('${signupResult}' == 'empty_username') {
 			alert("이름을 입력해 주세요.");
 
-		} else if ('${joinResult}' == 'empty_callnum') {
+		} else if ('${signupResult}' == 'empty_callnumber') {
 			alert("전화번호를 입력해 주세요.");
 		};
 
 		document.getElementById("userid").value = '${dto.userid}';
 		document.getElementById("username").value = '${dto.username}';
-		document.getElementById("callnum").value = '${dto.callnum}';
+		document.getElementById("callnumber").value = '${dto.callnumber}';
 	</script>
 </body>
 </html>
