@@ -25,6 +25,6 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
     </bean>
    
-    <context:component-scan base-package="com.studywithmeproject.persistence"></context:component-scan>
-    <context:component-scan base-package="com.studywithmeproject.service"></context:component-scan>
+    <context:component-scan base-package="com.studywithme.persistence"></context:component-scan>
+    <context:component-scan base-package="com.studywithme.service"></context:component-scan>
 </beans>
