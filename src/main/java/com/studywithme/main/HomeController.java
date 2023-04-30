@@ -14,21 +14,28 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String rootGET(Model model) {
-		logger.info("SWMProject Start");
+		logger.info("rootGET 角青");
 		
 		return "main";
 	}
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String mainGET(Model model) {
-		logger.info("SWMProject Start");
+		logger.info("mainGET 角青");
 		
 		return "main";
 	}
 	
-	@RequestMapping(value = "/t1", method = RequestMethod.GET)
-	public String t1GET(Model model) {
-		logger.info("SWMProject Start");
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public String rootPOST(Model model) {
+		logger.info("rootPOST 角青");
+		
+		return "main";
+	}
+	
+	@RequestMapping(value = "/main", method = RequestMethod.POST)
+	public String mainPOST(Model model) {
+		logger.info("mainPOST 角青");
 		
 		return "main";
 	}

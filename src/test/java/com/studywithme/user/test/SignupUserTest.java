@@ -21,12 +21,12 @@ public class SignupUserTest {
 	public void signupUserTest() {
 		try {
 			UserDTO dto = new UserDTO();
-			dto.setUserid("test1");
-			dto.setUserpw("test1pw");
-			dto.setUsername("테스트이름");
-			dto.setAddress("주소테스트");
-			dto.setUsergender("성별");
-			dto.setCallnumber("01012345678");
+			dto.setUserid("abcd1234");
+			dto.setUserpw("abcd1234pw");
+			dto.setUsername("7주차테스트");
+			dto.setAddress("7주차주소테스트");
+			dto.setUsergender("남자");
+			dto.setCallnumber("01077777777");
 			userDAO.signupUser(dto);
 			
 		} catch (Exception e) {

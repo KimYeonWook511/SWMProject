@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.swmproject.mappers.userMapper">
+<mapper namespace="com.studywithme.mappers.userMapper">
 
 	<insert id="signupUser">
 		insert into user_info (userid, userpw, username, address, usergender, callnumber)
 		values (#{userid}, #{userpw}, #{username}, #{address}, #{usergender}, #{callnumber})		
 	</insert>
-
+	
+	<select id="readUser" resultType="com.studywithme.domain.UserVO">
+		select * from user_info where userid = #{userid}
+	</select>
+	
 </mapper>

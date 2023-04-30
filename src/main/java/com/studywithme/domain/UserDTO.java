@@ -8,6 +8,7 @@ public class UserDTO {
 	private String address;
 	private String usergender;
 	private String callnumber;
+	private String authority;
 
 	public String getUserid() {
 		return userid;
@@ -55,5 +56,13 @@ public class UserDTO {
 
 	public void setCallnumber(String callnumber) {
 		this.callnumber = callnumber;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 }

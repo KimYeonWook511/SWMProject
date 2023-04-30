@@ -2,10 +2,12 @@ package com.studywithme.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.studywithme.domain.UserDTO;
+import com.studywithme.domain.UserVO;
 import com.studywithme.service.UserService;
 
 @Controller
@@ -77,6 +80,47 @@ public class UserController {
 			return "redirect:/user/signup";
 		}
 		
+		try {
+			// 세션생성
+			HttpSession session = request.getSession();
+			session.setAttribute("loginVO", userService.readUser(dto.getUserid()));
+			rttr.addFlashAttribute("joinResult", "success");
+			
+		} catch (Exception e) {
+			// 세션 생성 오류
+			rttr.addFlashAttribute("joinResult", "session_fail");
+		}
+		
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public void loginGET() {
+		logger.info("loginGET 실행");
+	}
+	
+	@RequestMapping(value = "/loginPOST", method = RequestMethod.POST)
+	public String loginPOST(@ModelAttribute UserDTO dto, Model model) throws Exception {
+		logger.info("loginPOST 실행");
+		
+		UserVO vo = userService.loginUser(dto); 
+		
+		if (vo == null) {
+			// 아이디가 존재하지 않을때
+			model.addAttribute("loginResult", -2);
+			return "/user/login";
+			
+		} else if (!vo.getUserpw().equals(dto.getUserpw())) {
+			// 비밀번호 불일치
+			model.addAttribute("loginResult", -1);
+			model.addAttribute("userid", dto.getUserid());
+			return "/user/login";
+			
+		} else {
+			// 로그인 성공
+			model.addAttribute("loginResult", 1);
+			model.addAttribute("loginVO", vo);
+			return "/main";
+		}
 	}
 }
