@@ -2,83 +2,83 @@ package com.studywithme.domain;
 
 public class UserVO {
 
-	private String userid;
-	private String userpw;
-	private String username;
-	private String address;
-	private String usergender;
-	private String callnumber;
-	private String signdate;
-	private String authority;
-	
-	public String getUserid() {
-		return userid;
+	private String userId;
+	private String userPassword;
+	private String userName;
+	private String userAddress;
+	private String userGender;
+	private String userCallNumber;
+	private String userSignDate;
+	private String userAuthority;
+
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getUserpw() {
-		return userpw;
+	public String getUserPassword() {
+		return userPassword;
 	}
 
-	public void setUserpw(String userpw) {
-		this.userpw = userpw;
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getUserAddress() {
+		return userAddress;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
 	}
 
-	public String getUsergender() {
-		return usergender;
+	public String getUserGender() {
+		return userGender;
 	}
 
-	public void setUsergender(String usergender) {
-		this.usergender = usergender;
+	public void setUserGender(String userGender) {
+		this.userGender = userGender;
 	}
 
-	public String getCallnumber() {
-		return callnumber;
+	public String getUserCallNumber() {
+		return userCallNumber;
 	}
 
-	public void setCallnumber(String callnumber) {
-		this.callnumber = callnumber;
+	public void setUserCallNumber(String userCallNumber) {
+		this.userCallNumber = userCallNumber;
 	}
 
-	public String getSigndate() {
-		return signdate;
+	public String getUserSignDate() {
+		return userSignDate;
 	}
 
-	public void setSigndate(String signdate) {
-		this.signdate = signdate;
+	public void setUserSignDate(String userSignDate) {
+		this.userSignDate = userSignDate;
 	}
 
-	public String getAuthority() {
-		return authority;
+	public String getUserAuthority() {
+		return userAuthority;
 	}
 
-	public void setAuthority(String authority) {
-		this.authority = authority;
+	public void setUserAuthority(String userAuthority) {
+		this.userAuthority = userAuthority;
 	}
 
 	@Override
 	public String toString() {
-		return "UserVO [userid=" + userid + ", userpw=" + userpw + ", username=" + username + ", address=" + address
-				+ ", usergender=" + usergender + ", callnumber=" + callnumber + ", signdate=" + signdate
-				+ ", authority=" + authority + "]";
+		return "UserVO [userId=" + userId + ", userPassword=" + userPassword + ", userName=" + userName
+				+ ", userAddress=" + userAddress + ", userGender=" + userGender + ", userCallNumber=" + userCallNumber
+				+ ", userSignDate=" + userSignDate + ", userAuthority=" + userAuthority + "]";
 	}
 }

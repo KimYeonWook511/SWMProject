@@ -23,34 +23,34 @@
 					<h3 style="text-align: center;">회원가입</h3>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="아이디"
-							name="userid" maxlength="20" id="userid" pattern="^[a-zA-Z0-9]+$">
+							name="userId" maxlength="20" id="userId" pattern="^[a-zA-Z0-9]+$">
 					</div>
 					<div class="form-group">
 						<input type="password" class="form-control" placeholder="비밀번호"
-							name="userpw" maxlength="20" id="userpw">
+							name="userPassword" maxlength="20" id="userPassword">
 					</div>
 					<div class="form-group">
 						<input type="password" class="form-control" placeholder="비밀번호 확인"
-							name="confirmuserpw" maxlength="20" id="confirmuserpw">
+							name="confirmUserPassword" maxlength="20" id="confirmUserPassword">
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="이름"
-							name="username" maxlength="20" id="username">
+							name="userName" maxlength="20" id="userName">
 					</div>
 					<div>
 						<input type="tel" class="form-control"
-							placeholder="전화번호 / '-'는 빼고 입력해 주세요" name="callnumber"
-							maxlength="11" id="callnumber"
+							placeholder="전화번호 / '-'는 빼고 입력해 주세요" name="userCallNumber"
+							maxlength="11" id="userCallNumber"
 							oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 					</div>
 					<br>
 					<div class="form-group" style="text-align: center;">
 						<div class="btn-group" data-toggle="buttons">
 							<label class="btn btn-primary active"> <%-- 								<c:out value="${dto.gender != '여자' ? 'active' : ''}"/>>  --%>
-								<input type="radio" name="usergender" autocomplete="off"
+								<input type="radio" name="userGender" autocomplete="off"
 								value="남자" id="male" checked>남자 <%-- 								<c:out value="${dto.gender != '여자' ? 'checked' : ''}"/>>			 --%>
 							</label> <label class="btn btn-primary"> <%-- 								<c:out value="${dto.gender == '여자' ? 'active' : ''}"/>> --%>
-								<input type="radio" name="usergender" autocomplete="off"
+								<input type="radio" name="userGender" autocomplete="off"
 								value="여자" id="female">여자 <%-- 								<c:out value="${dto.gender == '여자' ? 'checked' : ''}"/>> --%>
 							</label>
 						</div>
@@ -67,25 +67,25 @@
 		if ('${signupResult}' == 'fail_id') {
 			alert("이미 존재하는 아이디입니다.");
 
-		} else if ('${signupResult}' == 'fail_pw') {
+		} else if ('${signupResult}' == 'fail_password') {
 			alert("비밀번호를 확인해 주세요.");
 
-		} else if ('${signupResult}' == 'empty_userid') {
+		} else if ('${signupResult}' == 'empty_userId') {
 			alert("아이디를 입력해 주세요.");
 
-		} else if ('${signupResult}' == 'empty_userpw') {
+		} else if ('${signupResult}' == 'empty_userPassword') {
 			alert("비밀번호를 입력해 주세요.");
 
-		} else if ('${signupResult}' == 'empty_username') {
+		} else if ('${signupResult}' == 'empty_userName') {
 			alert("이름을 입력해 주세요.");
 
-		} else if ('${signupResult}' == 'empty_callnumber') {
+		} else if ('${signupResult}' == 'empty_userCallNumber') {
 			alert("전화번호를 입력해 주세요.");
 		};
 
-		document.getElementById("userid").value = '${dto.userid}';
-		document.getElementById("username").value = '${dto.username}';
-		document.getElementById("callnumber").value = '${dto.callnumber}';
+		document.getElementById("userId").value = '${dto.userId}';
+		document.getElementById("userName").value = '${dto.userName}';
+		document.getElementById("userCallNumber").value = '${dto.userCallNumber}';
 	</script>
 </body>
 </html>

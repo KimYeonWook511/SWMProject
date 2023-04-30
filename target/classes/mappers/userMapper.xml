@@ -4,12 +4,12 @@
 <mapper namespace="com.studywithme.mappers.userMapper">
 
 	<insert id="signupUser">
-		insert into user_info (userid, userpw, username, address, usergender, callnumber)
-		values (#{userid}, #{userpw}, #{username}, #{address}, #{usergender}, #{callnumber})		
+		insert into user_info (userId, userPassword, userName, userAddress, userGender, userCallNumber)
+		values (#{userId}, #{userPassword}, #{userName}, #{userAddress}, #{userGender}, #{userCallNumber})		
 	</insert>
 	
 	<select id="readUser" resultType="com.studywithme.domain.UserVO">
-		select * from user_info where userid = #{userid}
+		select * from user_info where userId = #{userId}
 	</select>
 	
 </mapper>

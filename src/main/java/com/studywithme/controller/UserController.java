@@ -33,38 +33,38 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String signupPOST(@RequestParam String confirmuserpw, @ModelAttribute UserDTO dto,
+	public String signupPOST(@RequestParam String confirmUserPassword, @ModelAttribute UserDTO dto,
 								RedirectAttributes rttr, HttpServletRequest request) {
 		logger.info("signupPOST 실행");
 		
-		if (dto.getUserid().isEmpty()) {
+		if (dto.getUserId().isEmpty()) {
 			logger.info("아이디 입력란 공백");
-			rttr.addFlashAttribute("signupResult", "empty_userid");
+			rttr.addFlashAttribute("signupResult", "empty_userId");
 			rttr.addFlashAttribute("dto", dto);
 			return "redirect:/user/signup";
 			
-		} else if (dto.getUserpw().isEmpty()) {
+		} else if (dto.getUserPassword().isEmpty()) {
 			logger.info("비밀번호 입력란 공백");
-			rttr.addFlashAttribute("signupResult", "empty_userpw");
+			rttr.addFlashAttribute("signupResult", "empty_userPassword");
 			rttr.addFlashAttribute("dto", dto);
 			return "redirect:/user/signup";
 			
-		} else if (dto.getUserid().isEmpty()) {
+		} else if (dto.getUserId().isEmpty()) {
 			logger.info("이름 입력란 공백");
-			rttr.addFlashAttribute("signupResult", "empty_username");
+			rttr.addFlashAttribute("signupResult", "empty_userName");
 			rttr.addFlashAttribute("dto", dto);
 			return "redirect:/user/signup";
 			
-		} else if (dto.getUserid().isEmpty()) {
+		} else if (dto.getUserCallNumber().isEmpty()) {
 			logger.info("전화번호 입력란 공백");
-			rttr.addFlashAttribute("signupResult", "empty_callnumber");
+			rttr.addFlashAttribute("signupResult", "empty_userCallNumber");
 			rttr.addFlashAttribute("dto", dto);
 			return "redirect:/user/signup";
 		}
 		
-		if (!confirmuserpw.equals(dto.getUserpw())) {
+		if (!confirmUserPassword.equals(dto.getUserPassword())) {
 			logger.info("비밀번호 불일치");
-			rttr.addFlashAttribute("signupResult", "fail_pw");
+			rttr.addFlashAttribute("signupResult", "fail_password");
 			rttr.addFlashAttribute("dto", dto);
 			return "redirect:/user/signup";
 		}
@@ -83,7 +83,7 @@ public class UserController {
 		try {
 			// 세션생성
 			HttpSession session = request.getSession();
-			session.setAttribute("loginVO", userService.readUser(dto.getUserid()));
+			session.setAttribute("loginVO", userService.readUser(dto.getUserId()));
 			rttr.addFlashAttribute("joinResult", "success");
 			
 		} catch (Exception e) {
@@ -110,10 +110,10 @@ public class UserController {
 			model.addAttribute("loginResult", -2);
 			return "/user/login";
 			
-		} else if (!vo.getUserpw().equals(dto.getUserpw())) {
+		} else if (!vo.getUserPassword().equals(dto.getUserPassword())) {
 			// 비밀번호 불일치
 			model.addAttribute("loginResult", -1);
-			model.addAttribute("userid", dto.getUserid());
+			model.addAttribute("userid", dto.getUserId());
 			return "/user/login";
 			
 		} else {

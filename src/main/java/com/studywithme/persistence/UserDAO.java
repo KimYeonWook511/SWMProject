@@ -6,5 +6,5 @@ import com.studywithme.domain.UserVO;
 public interface UserDAO {
 	
 	public void signupUser(UserDTO dto) throws Exception;
-	public UserVO readUser(String userid) throws Exception;
+	public UserVO readUser(String userId) throws Exception;
 }

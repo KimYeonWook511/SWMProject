@@ -22,8 +22,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public UserVO readUser(String userid) throws Exception {
+	public UserVO readUser(String userId) throws Exception {
 		// 유저 정보 불러오는 메서드
-		return (UserVO)sqlSession.selectOne(namespace + ".readUser", userid);
+		return (UserVO)sqlSession.selectOne(namespace + ".readUser", userId);
 	}
 }

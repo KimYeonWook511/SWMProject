@@ -21,14 +21,14 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public UserVO readUser(String userid) throws Exception {
+	public UserVO readUser(String userId) throws Exception {
 		// 유저 정보 불러오는 서비스
-		return userDAO.readUser(userid);
+		return userDAO.readUser(userId);
 	}
 	
 	@Override
 	public UserVO loginUser(UserDTO dto) throws Exception {
 		// 로그인 서비스
-		return userDAO.readUser(dto.getUserid());
+		return userDAO.readUser(dto.getUserId());
 	}
 }
