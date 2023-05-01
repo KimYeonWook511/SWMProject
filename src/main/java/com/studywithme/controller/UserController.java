@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -100,27 +99,27 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/loginPOST", method = RequestMethod.POST)
-	public String loginPOST(@ModelAttribute UserDTO dto, Model model) throws Exception {
+	public String loginPOST(@ModelAttribute UserDTO dto, RedirectAttributes rttr, HttpSession session) throws Exception {
 		logger.info("loginPOST 실행");
 		
 		UserVO vo = userService.loginUser(dto); 
 		
 		if (vo == null) {
 			// 아이디가 존재하지 않을때
-			model.addAttribute("loginResult", -2);
-			return "/user/login";
+			rttr.addFlashAttribute("loginResult", -2);
+			return "redirect:/user/login";
 			
 		} else if (!vo.getUserPassword().equals(dto.getUserPassword())) {
 			// 비밀번호 불일치
-			model.addAttribute("loginResult", -1);
-			model.addAttribute("userid", dto.getUserId());
-			return "/user/login";
+			rttr.addFlashAttribute("loginResult", -1);
+			rttr.addFlashAttribute("userId", dto.getUserId());
+			return "redirect:/user/login";
 			
 		} else {
 			// 로그인 성공
-			model.addAttribute("loginResult", 1);
-			model.addAttribute("loginVO", vo);
-			return "/main";
+			session.setAttribute("loginVO", vo);
+			rttr.addFlashAttribute("loginResult", 1);
+			return "redirect:/main";
 		}
 	}
 }

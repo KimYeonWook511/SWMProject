@@ -22,10 +22,10 @@
 				<form method="post" action="/user/loginPOST">
 					<h3 style="text-align: center;">로그인 화면</h3>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디" name="userid" maxlength="20" id="userid">
+						<input type="text" class="form-control" placeholder="아이디" name="userId" maxlength="20" id="userId">
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호" name="userpw" maxlength="20">
+						<input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20">
 					</div>
 					<div class="form-group" style="text-align: right;">
 					<input type="submit" class="btn" value="로그인">
@@ -38,13 +38,13 @@
 <script>
 	if ('${loginResult}' == -2) {
 		alert("아이디가 존재하지 않습니다.");
-		location.href = "/user/login"; // url 새로고침
+		//location.href = "/user/login"; // url 새로고침
 		
 	} else if ('${loginResult}' == -1) {
 		alert("비밀번호가 일치하지 않습니다.");
-		const userid = '${userid}';
-		location.href = "/user/login"; // url 새로고침
-		document.getElementById("userid").value = userid;
+		const userId = '${userId}';
+		// location.href = "/user/login"; // url 새로고침
+		document.getElementById("userId").value = userId;
 		
 	} else if ('${loginResult}' == '로그인 필요') {
 		alert("로그인이 필요합니다.");

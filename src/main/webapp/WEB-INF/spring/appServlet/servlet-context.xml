@@ -33,12 +33,12 @@
 		</interceptor>
 	</interceptors>
 	
-	<beans:bean id="loginPOSTInterceptor" class="com.studywithme.interceptor.LoginPOSTInterceptor"></beans:bean>
+	<!-- <beans:bean id="loginPOSTInterceptor" class="com.studywithme.interceptor.LoginPOSTInterceptor"></beans:bean>
 	<interceptors>
 		<interceptor>
 			<mapping path="/user/loginPOST"/>
 			<beans:ref bean="loginPOSTInterceptor"/>
 		</interceptor>
-	</interceptors>
+	</interceptors> -->
 	
 </beans:beans>

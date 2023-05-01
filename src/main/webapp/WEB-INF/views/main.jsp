@@ -8,9 +8,9 @@
 <body>
 <a href="/user/signup">회원가입</a><br>
 <a href="/user/login">로그인</a><br>
-userid : ${loginVO.userid }<br>
-username : ${loginVO.username }<br>
-signdate : ${loginVO.signdate }<br>
+userId : ${loginVO.userId }<br>
+userName : ${loginVO.userName }<br>
+userSignDate : ${loginVO.userSignDate }<br>
 </body>
 <script>
 	if ('${joinResult}' == 'success') {
