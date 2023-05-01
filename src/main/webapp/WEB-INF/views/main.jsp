@@ -1,13 +1,30 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+<meta charset="UTF-8">
+<title>SWM | 메인</title>
+<!-- 라이브러리 등록 - jQuery, Bootstrap : CDN 방식-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	.navbar {
+		margin-bottom: 0px;
+	}
+</style>
 </head>
 <body>
-<a href="/user/signup">회원가입</a><br>
-<a href="/user/login">로그인</a><br>
+<a href="/user/signup" class="btn btn-default">회원가입</a><br>
+<a href="/user/login" class="btn btn-default">로그인</a><br>
+<a href="/study/write" class="btn btn-default">스터디모집하기</a><br>
+세션확인--------------------------<br>
 userId : ${loginVO.userId }<br>
 userName : ${loginVO.userName }<br>
 userSignDate : ${loginVO.userSignDate }<br>
