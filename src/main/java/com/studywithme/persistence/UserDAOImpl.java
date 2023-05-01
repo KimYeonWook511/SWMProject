@@ -13,17 +13,17 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Inject
 	private SqlSession sqlSession;
-	private static final String namespace = "com.studywithme.mappers.userMapper";
+	private static final String NAMESPACE = "com.studywithme.mappers.userMapper";
 	
 	@Override
 	public void signupUser(UserDTO dto) throws Exception {
 		// 회원가입 메서드
-		sqlSession.insert(namespace + ".signupUser", dto);
+		sqlSession.insert(NAMESPACE + ".signupUser", dto);
 	}
 	
 	@Override
 	public UserVO readUser(String userId) throws Exception {
 		// 유저 정보 불러오는 메서드
-		return (UserVO)sqlSession.selectOne(namespace + ".readUser", userId);
+		return (UserVO)sqlSession.selectOne(NAMESPACE + ".readUser", userId);
 	}
 }

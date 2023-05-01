@@ -1,5 +1,7 @@
 package com.studywithme.domain;
 
+import java.util.Date;
+
 public class UserVO {
 
 	private String userId;
@@ -8,7 +10,7 @@ public class UserVO {
 	private String userAddress;
 	private String userGender;
 	private String userCallNumber;
-	private String userSignDate;
+	private Date userSignDate;
 	private String userAuthority;
 
 	public String getUserId() {
@@ -59,11 +61,11 @@ public class UserVO {
 		this.userCallNumber = userCallNumber;
 	}
 
-	public String getUserSignDate() {
+	public Date getUserSignDate() {
 		return userSignDate;
 	}
 
-	public void setUserSignDate(String userSignDate) {
+	public void setUserSignDate(Date userSignDate) {
 		this.userSignDate = userSignDate;
 	}
 
