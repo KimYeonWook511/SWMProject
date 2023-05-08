@@ -3,6 +3,8 @@ package com.studywithme.persistence;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import com.studywithme.domain.StudyDTO;
@@ -25,5 +27,17 @@ public class StudyDAOImpl implements StudyDAO {
 	public StudyVO readStudy(int studyNo) throws Exception {
 		// 스터디 공고 내용 조회
 		return (StudyVO)sqlSession.selectOne(NAMESPACE + ".readStudy", studyNo);
+	}
+	
+	@Override
+	public List<StudyVO> listStudy() throws Exception {
+		// 스터디 공고 조회 (리스트)
+		return sqlSession.selectList(NAMESPACE + ".listStudy");
+	}
+	
+	@Override
+	public void deleteStudy(int studyNo) throws Exception {
+		// 스터디 공고 삭제
+		sqlSession.delete(NAMESPACE + ".deleteStudy", studyNo);
 	}
 }

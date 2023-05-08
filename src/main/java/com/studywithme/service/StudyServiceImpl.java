@@ -1,5 +1,7 @@
 package com.studywithme.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -24,5 +26,17 @@ public class StudyServiceImpl implements StudyService {
 	public StudyVO readStudy(int studyNo) throws Exception {
 		// 스터디 내용 조회
 		return studyDAO.readStudy(studyNo);
+	}
+	
+	@Override
+	public List<StudyVO> listStudy() throws Exception {
+		// 스터디 공고 조회 (리스트)
+		return studyDAO.listStudy();
+	}
+	
+	@Override
+	public void deleteStudy(int studyNo) throws Exception {
+		// 스터디 공고 삭제
+		studyDAO.deleteStudy(studyNo);
 	}
 }

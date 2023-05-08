@@ -12,4 +12,14 @@
 		select * from study_info where studyNo = #{studyNo}
 	</select>
 	
+	<select id="listStudy" resultType="com.studywithme.domain.StudyVO">
+		<![CDATA[
+		select * from study_info where studyNo > 0 order by studyNo desc, studyWriteDate desc
+		]]>
+	</select>
+	
+	<delete id="deleteStudy">
+		delete from study_info where studyNo = #{studyNo}
+	</delete>
+	
 </mapper>
