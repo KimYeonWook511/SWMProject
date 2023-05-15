@@ -119,7 +119,28 @@ public class UserController {
 			// 로그인 성공
 			session.setAttribute("loginVO", vo);
 			rttr.addFlashAttribute("loginResult", 1);
-			return "redirect:/main";
+			return "redirect:/";
 		}
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logoutGET(HttpServletRequest request, RedirectAttributes rttr) {
+		logger.info("logoutGET 실행");
+		
+		UserVO vo = (UserVO)request.getSession().getAttribute("loginVO");
+		int result = 1;
+		
+		if (vo == null) {
+			// 현재 로그인 상태가 아님
+			result = -1;
+			
+		} else {
+			// 로그아웃
+			request.getSession().invalidate();
+			result = 1;
+		}
+		
+		rttr.addFlashAttribute("logoutResult", result);
+		return "redirect:/";
 	}
 }
