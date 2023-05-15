@@ -33,6 +33,14 @@
 		</interceptor>
 	</interceptors>
 	
+	<beans:bean id="loginCheckInterceptor" class="com.studywithme.interceptor.LoginCheckInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/study/write"/>
+			<beans:ref bean="loginCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 	<!-- <beans:bean id="loginPOSTInterceptor" class="com.studywithme.interceptor.LoginPOSTInterceptor"></beans:bean>
 	<interceptors>
 		<interceptor>
