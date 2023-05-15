@@ -99,7 +99,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/loginPOST", method = RequestMethod.POST)
-	public String loginPOST(@ModelAttribute UserDTO dto, RedirectAttributes rttr, HttpSession session) throws Exception {
+	public String loginPOST(@ModelAttribute UserDTO dto, RedirectAttributes rttr, HttpSession session, String redirectURL) throws Exception {
 		logger.info("loginPOST 실행");
 		
 		UserVO vo = userService.loginUser(dto); 
@@ -107,19 +107,30 @@ public class UserController {
 		if (vo == null) {
 			// 아이디가 존재하지 않을때
 			rttr.addFlashAttribute("loginResult", -2);
+			rttr.addFlashAttribute("redirectURL", redirectURL);
 			return "redirect:/user/login";
 			
 		} else if (!vo.getUserPassword().equals(dto.getUserPassword())) {
 			// 비밀번호 불일치
 			rttr.addFlashAttribute("loginResult", -1);
+			rttr.addFlashAttribute("redirectURL", redirectURL);
 			rttr.addFlashAttribute("userId", dto.getUserId());
 			return "redirect:/user/login";
 			
 		} else {
 			// 로그인 성공
 			session.setAttribute("loginVO", vo);
-			rttr.addFlashAttribute("loginResult", 1);
-			return "redirect:/";
+			
+			if (redirectURL.equals("")) {
+				// 메인 화면으로 리다이렉트
+				rttr.addFlashAttribute("loginResult", 1);
+				return "redirect:/";
+				
+			} else {
+				// 이전 주소로 리다이렉트
+				System.out.println(redirectURL);
+				return "redirect:" + redirectURL;
+			}
 		}
 	}
 	
