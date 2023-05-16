@@ -15,6 +15,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/views/layout/navbar.jsp" flush="false"/>
 	<div class="container">
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4">
@@ -40,7 +41,7 @@
 					<div>
 						<input type="tel" class="form-control"
 							placeholder="전화번호 / '-'는 빼고 입력해 주세요" name="userCallNumber"
-							maxlength="11" id="userCallNumber"
+							pattern=".{11,11}" title="전화번호는 11자리로 입력해 주세요" id="userCallNumber"
 							oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 					</div>
 					<br>

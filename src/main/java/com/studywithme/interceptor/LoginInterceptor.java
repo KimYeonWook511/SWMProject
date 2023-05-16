@@ -1,5 +1,6 @@
 package com.studywithme.interceptor;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,6 +23,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 		if (session.getAttribute("loginVO") != null) {
 			logger.info("이미 로그인 상태 (세션 존재)");
+			
+			request.setAttribute("msg", 2);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/");
+			dispatcher.forward(request, response);
+			
+			return false;
 		}
 		
 		return true;

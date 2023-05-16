@@ -21,9 +21,9 @@ public class CreateStudyTest {
 	public void createStudyTest() {
 		try {
 			StudyDTO dto = new StudyDTO();
-			dto.setStudyTitle("테스트1");
-			dto.setStudyContent("테스트1내용");
-			dto.setStudyWriter("테스트작성자");
+			dto.setStudyTitle("제목");
+			dto.setStudyContent("내용");
+			dto.setStudyWriter("작성자");
 			dao.createStudy(dto);
 			
 		} catch (Exception e) {

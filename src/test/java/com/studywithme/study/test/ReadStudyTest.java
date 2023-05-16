@@ -19,7 +19,7 @@ public class ReadStudyTest {
 	@Test
 	public void readStudyTest() {
 		try {
-			System.out.println(dao.readStudy(1));
+			System.out.println(dao.readStudy(0));
 			
 		} catch (Exception e) {
 			System.out.println("½ÇÆÐ");

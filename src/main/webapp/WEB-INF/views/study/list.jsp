@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="/css/list.css">
 </head>
 <body>
+	<jsp:include page="/WEB-INF/views/layout/navbar.jsp" flush="false"/>
 	<h2 style="margin-left:10px;">스터디 모집 리스트</h2>
 	<br>
 	<table class="table table-bordered">

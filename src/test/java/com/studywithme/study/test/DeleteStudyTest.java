@@ -19,7 +19,7 @@ public class DeleteStudyTest {
 	@Test
 	public void deleteStudyTest() {
 		try {
-			dao.deleteStudy(5);
+			dao.deleteStudy(0);
 			
 		} catch (Exception e) {
 			System.out.println("½ÇÆÐ");

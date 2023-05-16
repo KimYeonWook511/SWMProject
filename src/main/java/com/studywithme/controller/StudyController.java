@@ -52,7 +52,6 @@ public class StudyController {
 			logger.info("createStudy중 오류");
 			return "redirect:/";
 		}
-		
 	}
 	
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
@@ -83,7 +82,6 @@ public class StudyController {
 			logger.info("listStudy중 오류");
 			// 오류
 		}
-		
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)

@@ -15,6 +15,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/views/layout/navbar.jsp" flush="false"/>	
 	<div class="container">
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4">
@@ -30,6 +31,7 @@
 					<div class="form-group" style="text-align: right;">
 					<input type="submit" class="btn" value="로그인">
 					</div>
+					<input type="hidden" name="redirectURL" value="${redirectURL }">
 				</form>
 			</div>
 		</div>
@@ -38,17 +40,15 @@
 <script>
 	if ('${loginResult}' == -2) {
 		alert("아이디가 존재하지 않습니다.");
-		//location.href = "/user/login"; // url 새로고침
 		
 	} else if ('${loginResult}' == -1) {
 		alert("비밀번호가 일치하지 않습니다.");
 		const userId = '${userId}';
-		// location.href = "/user/login"; // url 새로고침
 		document.getElementById("userId").value = userId;
-		
-	} else if ('${loginResult}' == '로그인 필요') {
-		alert("로그인이 필요합니다.");
-		location.href = "/user/login"; // url 새로고침
+	}
+	
+	if ('${msg}' == 1) {
+		alert('로그인이 필요한 서비스입니다.');
 	}
 </script>
 </html>

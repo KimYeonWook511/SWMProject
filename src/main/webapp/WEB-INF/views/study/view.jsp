@@ -16,9 +16,9 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/board.css">
-<link rel="stylesheet" href="/css/navbar.css">
 </head>
-<body>	
+<body>
+	<jsp:include page="/WEB-INF/views/layout/navbar.jsp" flush="false"/>
 	<form role="form" method="post">
 		<div class="main">
 			<div class="column-main">
