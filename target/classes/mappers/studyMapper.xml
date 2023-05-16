@@ -22,4 +22,8 @@
 		delete from study_info where studyNo = #{studyNo}
 	</delete>
 	
+	<update id="updateStudy">
+		update study_info set studyTitle = #{studyTitle}, studyContent = #{studyContent}, studyUpdateDate = now() where studyNo = #{studyNo}
+	</update>
+	
 </mapper>

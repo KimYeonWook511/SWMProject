@@ -11,4 +11,5 @@ public interface StudyDAO {
 	public StudyVO readStudy(int studyNo) throws Exception;
 	public List<StudyVO> listStudy() throws Exception; 
 	public void deleteStudy(int studyNo) throws Exception;
+	public void updateStudy(StudyDTO dto) throws Exception;
 }

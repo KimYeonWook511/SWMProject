@@ -40,4 +40,10 @@ public class StudyDAOImpl implements StudyDAO {
 		// 스터디 공고 삭제
 		sqlSession.delete(NAMESPACE + ".deleteStudy", studyNo);
 	}
+	
+	@Override
+	public void updateStudy(StudyDTO dto) throws Exception {
+		// 스터디 공고 수정
+		sqlSession.update(NAMESPACE + ".updateStudy", dto);
+	}
 }

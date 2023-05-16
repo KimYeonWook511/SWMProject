@@ -39,4 +39,10 @@ public class StudyServiceImpl implements StudyService {
 		// 스터디 공고 삭제
 		studyDAO.deleteStudy(studyNo);
 	}
+	
+	@Override
+	public void updateStudy(StudyDTO dto) throws Exception {
+		// 스터디 공고 수정
+		studyDAO.updateStudy(dto);
+	}
 }
