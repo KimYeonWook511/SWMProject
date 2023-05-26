@@ -33,7 +33,7 @@
 	</logger>
 
 	<!-- 추가 -->
-	<logger name="org.studywithme.controller">
+	<logger name="com.studywithme.controller">
 		<level value="info" />
 	</logger>
 	
