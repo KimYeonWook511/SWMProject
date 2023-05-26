@@ -3,7 +3,9 @@ package com.studywithme.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -55,13 +57,42 @@ public class StudyController {
 	}
 	
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
-	public void viewGET(int studyNo, Model model) {
+	public void viewGET(int studyNo, HttpServletRequest request, Model model) {
 		logger.info("viewGET 실행");
 		
 		try {
-			StudyVO studyVO = studyService.readStudy(studyNo);
+			UserVO vo = (UserVO)request.getSession().getAttribute("loginVO");
 			
+			if (vo != null && !vo.getUserId().equals(studyService.readStudy(studyNo).getStudyWriter())) 
+				studyService.viewCountStudy(studyNo);
+			
+			StudyVO studyVO = studyService.readStudy(studyNo);
 			model.addAttribute("studyVO", studyVO);
+			
+//			// 쿠키를 활용한 조회수
+//			Cookie cookies[] = request.getCookies();
+//			
+//			if (cookies == null) {
+//				// 쿠기 존재하지 않음
+//				Cookie cookie = new Cookie("viewStudyNo", "[" + studyNo + "]");
+//				cookie.setMaxAge(60 * 60 * 2); // 쿠키 시간
+//				response.addCookie(cookie);
+//				
+//				studyService.viewCountStudy(studyNo);
+//				
+//			} else {
+//				for (Cookie cookie : cookies) {
+//					System.out.println(cookie.getValue());
+//					if (cookie.getName().equals("viewStudyNo") && !cookie.getValue().contains("[" + studyNo + "]")) {
+//						// 스터디 조회한 내역 없음
+//						cookie.setValue(cookie.getValue() + "_[" + studyNo + "]");
+//						cookie.setMaxAge(60 * 60 * 2); // 쿠키 시간
+//						response.addCookie(cookie);
+//						
+//						studyService.viewCountStudy(studyNo);
+//					}
+//				}
+//			}
 			
 		} catch (Exception e) {
 			logger.info("viewGET중 오류");
@@ -96,6 +127,37 @@ public class StudyController {
 		} catch (Exception e) {
 			// 스터디 공고 삭제중 오류
 			logger.info("deleteStudy중 오류");
+			return "redirect:/오류페이지로";
+		}
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void modifyGET(int studyNo, Model model) {
+		logger.info("modifyGET 실행");
+		
+		try {
+			model.addAttribute("studyVO", studyService.readStudy(studyNo));
+			
+		} catch (Exception e) {
+			// 스터디 공고 내용 조회 중 오류
+			logger.info("readStudy중 오류");
+			//처리
+		}
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modifyPOST(StudyDTO dto, RedirectAttributes rttr) {
+		logger.info("modifyPOST 실행");
+		
+		try {
+			studyService.updateStudy(dto);
+			
+			return "redirect:/study/list";
+			
+		} catch (Exception e) {
+			// 스터디 공고 수정 중 오류
+			logger.info("updateStudy 오류");
+			
 			return "redirect:/오류페이지로";
 		}
 	}

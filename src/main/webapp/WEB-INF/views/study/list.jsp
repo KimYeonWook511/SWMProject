@@ -26,6 +26,7 @@
 			<th style="width: 60px">번호</th>
 			<th>제목</th>
 			<th>작성자</th>
+			<th>조회수</th>
 			<th>게시일</th>
 		</tr>
 		<c:forEach items="${studyList }" var="studyVO">
@@ -33,6 +34,7 @@
 				<td class="studyNo">${studyVO.studyNo }</td>
 				<td>${studyVO.studyTitle }</td>
 				<td>${studyVO.studyWriter }</td>
+				<td>${studyVO.studyViewCount }</td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${studyVO.studyWriteDate }"/></td>
 			</tr>			
 		</c:forEach>

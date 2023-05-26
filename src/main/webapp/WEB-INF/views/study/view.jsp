@@ -29,10 +29,10 @@
 					</div>
 					<div class="study-status">
 						<div class="status-viewCount">
-							조회수 : ${studyVO.studyViewCount + 1}
+							조회수 : ${studyVO.studyViewCount }
 						</div>
 						<div class="status-write">
-							<span class="status-writer">작성자 : ${studyVO.studyWriter }</span>
+							<span class="status-writer">작성자 : ${studyVO.studyWriter } &nbsp;</span>
 							<span class="status-writeDate">작성일 : <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${studyVO.studyWriteDate }"/></span>
 						</div>
 						<hr class="hr-bar">
@@ -49,16 +49,19 @@
 						<button type="button" class="btn btn-default pull-right delete">삭제</button>
 						<button type="button" class="btn btn-default pull-right modify">수정</button>	
 					</c:if>
+					<c:if test="${not empty loginVO && !loginVO.userId.equals(studyVO.studyWriter) && loginVO.userAuthority.equals('member')}">
+						<button type="button" class="btn btn-default pull-right volunteer">지원하기</button>
+					</c:if>
 					<button type="button" class="btn btn-default pull-right list">목록</button>
 				</div>
 			</div>
-			<div class="column-side">
+			<!-- <div class="column-side">
 				<div class="user-info">
 					<div class="user-info-title">
 						게시물 회원 정보
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</form>
 	<script>
@@ -81,7 +84,19 @@
 			$(".list").on("click", function() {
 				self.location="/study/list";
 			});
+			
+			$(".volunteer").on("click", function() {
+				popup(formObj);
+			});
 		});
+		
+		function popup(frm) {
+			window.open("", "스터디 지원", "width=430,height=500,location=no,status=no,scrollbars=yes");
+			frm.attr("action", "/study/volunteer");
+			frm.attr("target", "스터디 지원");
+			frm.attr("method", "post");
+			frm.submit();
+		}
 	</script>
 </body>
 </html>
