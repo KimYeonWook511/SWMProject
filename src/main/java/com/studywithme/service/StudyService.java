@@ -12,4 +12,5 @@ public interface StudyService {
 	public List<StudyVO> listStudy() throws Exception;
 	public void deleteStudy(int studyNo) throws Exception;
 	public void updateStudy(StudyDTO dto) throws Exception;
+	public void viewCountStudy(int studyNo) throws Exception;
 }

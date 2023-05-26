@@ -26,4 +26,8 @@
 		update study_info set studyTitle = #{studyTitle}, studyContent = #{studyContent}, studyUpdateDate = now() where studyNo = #{studyNo}
 	</update>
 	
+	<update id="viewCountStudy">
+		update study_info set studyViewCount = studyViewCount + 1 where studyNo = #{studyNo}
+	</update>
+	
 </mapper>

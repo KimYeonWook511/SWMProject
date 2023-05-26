@@ -46,4 +46,10 @@ public class StudyDAOImpl implements StudyDAO {
 		// 스터디 공고 수정
 		sqlSession.update(NAMESPACE + ".updateStudy", dto);
 	}
+	
+	@Override
+	public void viewCountStudy(int studyNo) throws Exception {
+		// 스터디 조회수 증가
+		sqlSession.update(NAMESPACE + ".viewCountStudy", studyNo);
+	}
 }

@@ -45,4 +45,10 @@ public class StudyServiceImpl implements StudyService {
 		// 스터디 공고 수정
 		studyDAO.updateStudy(dto);
 	}
+	
+	@Override
+	public void viewCountStudy(int studyNo) throws Exception {
+		// 스터디 조회수 증가
+		studyDAO.viewCountStudy(studyNo);
+	}
 }
