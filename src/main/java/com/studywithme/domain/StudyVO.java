@@ -31,7 +31,11 @@ public class StudyVO {
 	public String getStudyContent() {
 		return studyContent;
 	}
-
+	
+	public String getReplStudyContent() {
+		return studyContent.replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>").replace(" ", "&nbsp;");
+	}
+	
 	public void setStudyContent(String studyContent) {
 		this.studyContent = studyContent;
 	}
