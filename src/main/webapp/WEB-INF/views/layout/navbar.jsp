@@ -35,6 +35,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="/study/list">스터디 리스트</a></li>
 						<li><a href="/study/write">스터디 모집하기</a></li>
+						<li><a href="/study/myList">나의 스터디 모집 리스트</a></li>
 					</ul>
 				</li>
 				<c:if test="${loginVO.userAuthority == 'admin' }">

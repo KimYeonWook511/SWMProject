@@ -37,6 +37,10 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/study/write"/>
+			<mapping path="/study/modify"/>
+			<mapping path="/study/delete"/>
+			<mapping path="/study/apply"/>
+			<mapping path="/study/myList"/>
 			<beans:ref bean="loginCheckInterceptor"/>
 		</interceptor>
 	</interceptors>
