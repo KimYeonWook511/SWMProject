@@ -60,4 +60,10 @@ public class StudyDAOImpl implements StudyDAO {
 		// 스터디 지원
 		sqlSession.insert(NAMESPACE + ".applyStudy", dto);
 	}
+	
+	@Override
+	public ApplyVO readApply(int applyNo) throws Exception {
+		// 스터디 지원서 조회
+		return (ApplyVO)sqlSession.selectOne(NAMESPACE + ".readApply", applyNo);
+	}
 }

@@ -35,4 +35,8 @@
 		values (#{studyNo}, #{applyContent}, #{applyWriter})
 	</insert>
 	
+	<select id="readApply" resultType="com.studywithme.domain.ApplyVO">
+		select * from apply_info where applyNo = #{applyNo}
+	</select>
+	
 </mapper>

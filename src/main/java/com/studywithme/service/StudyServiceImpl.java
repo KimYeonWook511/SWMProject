@@ -59,4 +59,10 @@ public class StudyServiceImpl implements StudyService {
 		// 스터디 지원
 		studyDAO.applyStudy(dto);
 	}
+	
+	@Override
+	public ApplyVO readApply(int applyNo) throws Exception {
+		// 스터디 지원서 조회
+		return studyDAO.readApply(applyNo);
+	}
 }
