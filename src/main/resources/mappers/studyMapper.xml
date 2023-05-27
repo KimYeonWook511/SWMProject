@@ -45,4 +45,14 @@
 		]]>
 	</select>
 	
+	<select id="myListStudyCountApply" resultType="com.studywithme.domain.ApplyCountVO">
+		<![CDATA[	  
+		  select s.studyNo, ifnull(cnt, 0) as applyCount
+		    from (select * from study_info where studyWriter = #{studyWriter}) as s
+		    left join (select studyNo, count(*) cnt from apply_info group by studyNo) as a
+		    on s.studyNo = a.studyNo
+		    order by studyWriteDate desc
+		  ]]>
+	</select>
+	
 </mapper>

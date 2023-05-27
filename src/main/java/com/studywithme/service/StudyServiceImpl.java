@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.studywithme.domain.ApplyCountVO;
 import com.studywithme.domain.ApplyDTO;
 import com.studywithme.domain.ApplyVO;
 import com.studywithme.domain.StudyDTO;
@@ -70,5 +71,11 @@ public class StudyServiceImpl implements StudyService {
 	public List<StudyVO> myListStudy(String studyWriter) throws Exception {
 		// 나의 스터디 리스트 조회
 		return studyDAO.myListStudy(studyWriter);
+	}
+	
+	@Override
+	public List<ApplyCountVO> myListStudyCountApply(String studyWriter) throws Exception {
+		// 나의 스터디 리스트 지원자 수 조회
+		return studyDAO.myListStudyCountApply(studyWriter);
 	}
 }

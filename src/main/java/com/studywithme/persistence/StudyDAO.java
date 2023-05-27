@@ -2,6 +2,7 @@ package com.studywithme.persistence;
 
 import java.util.List;
 
+import com.studywithme.domain.ApplyCountVO;
 import com.studywithme.domain.ApplyDTO;
 import com.studywithme.domain.ApplyVO;
 import com.studywithme.domain.StudyDTO;
@@ -18,4 +19,5 @@ public interface StudyDAO {
 	public void applyStudy(ApplyDTO dto) throws Exception;
 	public ApplyVO readApply(int applyNo) throws Exception;
 	public List<StudyVO> myListStudy(String studyWriter) throws Exception;
+	public List<ApplyCountVO> myListStudyCountApply(String studyWriter) throws Exception;
 }
