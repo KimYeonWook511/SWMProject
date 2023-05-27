@@ -66,4 +66,10 @@ public class StudyDAOImpl implements StudyDAO {
 		// 스터디 지원서 조회
 		return (ApplyVO)sqlSession.selectOne(NAMESPACE + ".readApply", applyNo);
 	}
+	
+	@Override
+	public List<StudyVO> myListStudy(String studyWriter) throws Exception {
+		// 나의 스터디 리스트 조회
+		return sqlSession.selectList(NAMESPACE + ".myListStudy", studyWriter);
+	}
 }

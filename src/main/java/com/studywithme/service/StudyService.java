@@ -17,4 +17,5 @@ public interface StudyService {
 	public void viewCountStudy(int studyNo) throws Exception;
 	public void applyStudy(ApplyDTO dto) throws Exception;
 	public ApplyVO readApply(int applyNo) throws Exception;
+	public List<StudyVO> myListStudy(String studyWriter) throws Exception;
 }

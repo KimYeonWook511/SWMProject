@@ -39,4 +39,10 @@
 		select * from apply_info where applyNo = #{applyNo}
 	</select>
 	
+	<select id="myListStudy" resultType="com.studywithme.domain.StudyVO">
+		<![CDATA[
+		select * from study_info where studyWriter = #{studyWriter} and studyNo > 0 order by studyNo desc, studyWriteDate desc
+		]]>
+	</select>
+	
 </mapper>
