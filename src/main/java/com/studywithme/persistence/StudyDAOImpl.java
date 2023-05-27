@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.studywithme.domain.ApplyDTO;
+import com.studywithme.domain.ApplyVO;
 import com.studywithme.domain.StudyDTO;
 import com.studywithme.domain.StudyVO;
 
@@ -51,5 +53,11 @@ public class StudyDAOImpl implements StudyDAO {
 	public void viewCountStudy(int studyNo) throws Exception {
 		// 스터디 조회수 증가
 		sqlSession.update(NAMESPACE + ".viewCountStudy", studyNo);
+	}
+	
+	@Override
+	public void applyStudy(ApplyDTO dto) throws Exception {
+		// 스터디 지원
+		sqlSession.insert(NAMESPACE + ".applyStudy", dto);
 	}
 }

@@ -30,4 +30,9 @@
 		update study_info set studyViewCount = studyViewCount + 1 where studyNo = #{studyNo}
 	</update>
 	
+	<insert id="applyStudy">
+		insert into apply_info (studyNo, applyContent, applyWriter)
+		values (#{studyNo}, #{applyContent}, #{applyWriter})
+	</insert>
+	
 </mapper>

@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.studywithme.domain.ApplyDTO;
+import com.studywithme.domain.ApplyVO;
 import com.studywithme.domain.StudyDTO;
 import com.studywithme.domain.StudyVO;
 import com.studywithme.persistence.StudyDAO;
@@ -50,5 +52,11 @@ public class StudyServiceImpl implements StudyService {
 	public void viewCountStudy(int studyNo) throws Exception {
 		// 스터디 조회수 증가
 		studyDAO.viewCountStudy(studyNo);
+	}
+	
+	@Override
+	public void applyStudy(ApplyDTO dto) throws Exception {
+		// 스터디 지원
+		studyDAO.applyStudy(dto);
 	}
 }
