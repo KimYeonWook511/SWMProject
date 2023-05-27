@@ -1,7 +1,9 @@
 package com.studywithme.controller;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.studywithme.domain.ApplyCountVO;
 import com.studywithme.domain.ApplyDTO;
 import com.studywithme.domain.StudyDTO;
 import com.studywithme.domain.StudyVO;
@@ -195,6 +198,29 @@ public class StudyController {
 			// 스크립트 오류
 			logger.info("PrintWriter 오류");
 		}
+	}
+	
+	@RequestMapping(value = "/myList", method = RequestMethod.GET)
+	public void myListGET(Model model, HttpSession session) {
+		logger.info("myListGET 실행");
 		
+		String studyWriter = ((UserVO)session.getAttribute("loginVO")).getUserId();
+		
+		try {
+			List<StudyVO> studyList = studyService.myListStudy(studyWriter);
+			List<ApplyCountVO> applyCountList = studyService.myListStudyCountApply(studyWriter);
+			Map<Integer, Integer> applyCountMap = new HashMap<Integer, Integer>(); 
+			
+			for (ApplyCountVO vo : applyCountList) {
+				applyCountMap.put(vo.getStudyNo(), vo.getApplyCount());
+			}
+			
+			model.addAttribute("studyList", studyList);
+			model.addAttribute("applyCountMap", applyCountMap);
+			
+		} catch (Exception e) {
+			// myList관련 오류
+			logger.info("studyService myList관련 오류");
+		}
 	}
 }
