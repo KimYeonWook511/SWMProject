@@ -50,7 +50,7 @@
 						<button type="button" class="btn btn-default pull-right modify">수정</button>	
 					</c:if>
 					<c:if test="${not empty loginVO && !loginVO.userId.equals(studyVO.studyWriter) && loginVO.userAuthority.equals('member')}">
-						<button type="button" class="btn btn-default pull-right volunteer">지원하기</button>
+						<button type="button" class="btn btn-default pull-right apply">지원하기</button>
 					</c:if>
 					<button type="button" class="btn btn-default pull-right list">목록</button>
 				</div>
@@ -85,14 +85,14 @@
 				self.location="/study/list";
 			});
 			
-			$(".volunteer").on("click", function() {
+			$(".apply").on("click", function() {
 				popup(formObj);
 			});
 		});
 		
 		function popup(frm) {
-			window.open("", "스터디 지원", "width=430,height=500,location=no,status=no,scrollbars=yes");
-			frm.attr("action", "/study/volunteer");
+			window.open("", "스터디 지원", "width=500,height=590,location=no,status=no,scrollbars=yes");
+			frm.attr("action", "/study/apply");
 			frm.attr("target", "스터디 지원");
 			frm.attr("method", "post");
 			frm.submit();

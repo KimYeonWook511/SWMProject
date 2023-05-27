@@ -1,5 +1,6 @@
 package com.studywithme.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.studywithme.domain.ApplyDTO;
 import com.studywithme.domain.StudyDTO;
 import com.studywithme.domain.StudyVO;
 import com.studywithme.domain.UserVO;
@@ -160,5 +162,39 @@ public class StudyController {
 			
 			return "redirect:/오류페이지로";
 		}
+	}
+	
+	@RequestMapping(value = "/apply", method = RequestMethod.POST)
+	public void applyPOST(int studyNo, Model model) {
+		logger.info("applyPOST 실행");
+		
+		model.addAttribute("studyNo", studyNo);
+	}
+	
+	@RequestMapping(value = "/apply.do", method = RequestMethod.POST)
+	public void applyDoPOST(ApplyDTO dto, HttpServletRequest request, HttpServletResponse response) {
+		logger.info("applyDoPOST 실행");
+		
+		HttpSession session = request.getSession();
+		dto.setApplyWriter(((UserVO)session.getAttribute("loginVO")).getUserId());
+		
+		try {
+			studyService.applyStudy(dto);
+			
+		} catch (Exception e) {
+			// 스터디 지원 중 오류
+			logger.info("studyService 오류");
+		}
+		
+		try {
+			PrintWriter out = response.getWriter();
+			out.println("<script>window.close();</script>");
+			out.flush();
+			
+		} catch (Exception e) {
+			// 스크립트 오류
+			logger.info("PrintWriter 오류");
+		}
+		
 	}
 }
