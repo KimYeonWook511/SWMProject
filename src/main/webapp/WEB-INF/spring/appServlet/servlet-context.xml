@@ -46,12 +46,14 @@
 		</interceptor>
 	</interceptors>
 	
-	<!-- <beans:bean id="loginPOSTInterceptor" class="com.studywithme.interceptor.LoginPOSTInterceptor"></beans:bean>
+	<beans:bean id="studyInterceptor" class="com.studywithme.interceptor.StudyInterceptor"></beans:bean>
 	<interceptors>
 		<interceptor>
-			<mapping path="/user/loginPOST"/>
-			<beans:ref bean="loginPOSTInterceptor"/>
+			<mapping path="/study/modify"/>
+			<mapping path="/study/delete"/>
+			<mapping path="/study/applyList"/>
+			<beans:ref bean="studyInterceptor"/>
 		</interceptor>
-	</interceptors> -->
+	</interceptors>
 	
 </beans:beans>
