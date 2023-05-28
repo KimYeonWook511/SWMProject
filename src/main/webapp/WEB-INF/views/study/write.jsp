@@ -19,7 +19,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/layout/navbar.jsp" flush="false"/>
 	<c:if test="${not empty loginVO}">
-		<form action="/study/write" method="post" enctype="multipart/form-data">
+		<form action="/study/write" method="post">
 			<div class="main">
 				<div class="column-main">
 					<div class="study-title">
