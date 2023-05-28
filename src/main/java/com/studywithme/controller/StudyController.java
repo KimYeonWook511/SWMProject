@@ -1,6 +1,7 @@
 package com.studywithme.controller;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -231,6 +232,7 @@ public class StudyController {
 		
 		try {
 			List<ApplyVO> applyList = studyService.myStudyApplyList(studyNo);
+			List<ApplyVO> applyPassList = new ArrayList<ApplyVO>();
 			List<UserVO> userList = studyService.myStudyApplyUserList(studyNo);
 			Map<String, UserVO> userMap = new HashMap<String, UserVO>();
 			
@@ -238,7 +240,12 @@ public class StudyController {
 				userMap.put(vo.getUserId(), vo);
 			}
 			
-			model.addAttribute("applyList", applyList);
+			for (int i = 0; i < applyList.size(); i++) {
+				if (applyList.get(i).getApplyState() == 1) applyPassList.add(applyList.remove(i));
+			}
+			
+			model.addAttribute("applyPassList", applyPassList);
+			model.addAttribute("applyFailList", applyList);
 			model.addAttribute("userMap", userMap);
 			
 		} catch (Exception e) {
