@@ -41,8 +41,12 @@
 			<mapping path="/study/modify"/>
 			<mapping path="/study/delete"/>
 			<mapping path="/study/apply"/>
+			<mapping path="/study/apply.do"/>
 			<mapping path="/study/myList"/>
 			<mapping path="/study/applyList"/>
+			<mapping path="/study/applyView"/>
+			<mapping path="/study/applyPass"/>
+			<mapping path="/study/applyFail"/>
 			<beans:ref bean="loginCheckInterceptor"/>
 		</interceptor>
 	</interceptors>
@@ -61,7 +65,18 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/study/apply"/>
+			<mapping path="/study/apply.do"/>
 			<beans:ref bean="applyCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	<beans:bean id="applyAccessInterceptor" class="com.studywithme.interceptor.ApplyAccessInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/study/applyView"/>
+			<mapping path="/study/applyPass"/>
+			<mapping path="/study/applyFail"/>
+			<beans:ref bean="applyAccessInterceptor"/>
 		</interceptor>
 	</interceptors>
 	
