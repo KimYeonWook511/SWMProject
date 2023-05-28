@@ -52,7 +52,7 @@
 		    left join (select studyNo, count(*) cnt from apply_info group by studyNo) as a
 		    on s.studyNo = a.studyNo
 		    order by studyWriteDate desc
-		  ]]>
+		]]>
 	</select>
 	
 	<select id="myStudyApplyList" resultType="com.studywithme.domain.ApplyVO">
@@ -61,4 +61,12 @@
 		]]>
 	</select>
 	
+	<select id="myStudyApplyUserList" resultType="com.studywithme.domain.UserVO">
+		<![CDATA[	  
+		  select userId, userGender
+		    from user_info as u 
+		    inner join apply_info as a 
+		    on a.studyNo = #{studyNo} and u.userId = a.applyWriter;
+		]]>
+	</select>
 </mapper>

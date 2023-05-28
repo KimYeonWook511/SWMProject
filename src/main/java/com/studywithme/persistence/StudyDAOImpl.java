@@ -12,6 +12,7 @@ import com.studywithme.domain.ApplyDTO;
 import com.studywithme.domain.ApplyVO;
 import com.studywithme.domain.StudyDTO;
 import com.studywithme.domain.StudyVO;
+import com.studywithme.domain.UserVO;
 
 @Repository
 public class StudyDAOImpl implements StudyDAO {
@@ -84,5 +85,11 @@ public class StudyDAOImpl implements StudyDAO {
 	public List<ApplyVO> myStudyApplyList(int studyNo) throws Exception {
 		// 나의 스터디 지원자 리스트 조회
 		return sqlSession.selectList(NAMESPACE + ".myStudyApplyList", studyNo);
+	}
+	
+	@Override
+	public List<UserVO> myStudyApplyUserList(int studyNo) throws Exception {
+		// 나의 스터디 지원자 정보 리스트 조회
+		return sqlSession.selectList(NAMESPACE + ".myStudyApplyUserList", studyNo);
 	}
 }

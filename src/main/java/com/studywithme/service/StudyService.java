@@ -7,6 +7,7 @@ import com.studywithme.domain.ApplyDTO;
 import com.studywithme.domain.ApplyVO;
 import com.studywithme.domain.StudyDTO;
 import com.studywithme.domain.StudyVO;
+import com.studywithme.domain.UserVO;
 
 public interface StudyService {
 	
@@ -21,4 +22,5 @@ public interface StudyService {
 	public List<StudyVO> myListStudy(String studyWriter) throws Exception;
 	public List<ApplyCountVO> myListStudyCountApply(String studyWriter) throws Exception;
 	public List<ApplyVO> myStudyApplyList(int studyNo) throws Exception;
+	public List<UserVO> myStudyApplyUserList(int studyNo) throws Exception;
 }
