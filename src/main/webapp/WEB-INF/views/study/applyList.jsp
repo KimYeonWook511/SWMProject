@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SWM | 나의 스터디</title>
+<title>SWM | 스터디 지원자</title>
 <!-- 라이브러리 등록 - jQuery, Bootstrap : CDN 방식-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -20,40 +20,33 @@
 <body>
 	<c:if test="${not empty loginVO}">
 	<jsp:include page="/WEB-INF/views/layout/navbar.jsp" flush="false"/>
-	<h2 style="margin-left:10px;">나의 스터디 모집 리스트</h2>
+	<h2 style="margin-left:10px;">스터디 지원자 리스트</h2>
 	<br>
 	<table class="table table-bordered">
 		<tr>
-			<th style="width: 60px">번호</th>
-			<th>제목</th>
+			<th style="width: 150px">스터디 번호</th>
+			<th style="width: 150px">지원서 번호</th>
 			<th>작성자</th>
-			<th>조회수</th>
-			<th>게시일</th>
-			<th>지원자수</th>
+			<th>작성자 성별</th>
+			<th>지원날짜</th>
 		</tr>
-		<c:forEach items="${studyList }" var="studyVO">
+		<c:forEach items="${applyList }" var="applyVO">
 			<tr class="rowdata">
-				<td class="studyNo">${studyVO.studyNo }</td>
-				<td>${studyVO.studyTitle }</td>
-				<td>${studyVO.studyWriter }</td>
-				<td>${studyVO.studyViewCount }</td>
-				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${studyVO.studyWriteDate }"/></td>
-				<td>${applyCountMap.get(studyVO.studyNo) }<button type="button" class="btn btn-default pull-right applyList" onclick='event.stopPropagation();applyList(${studyVO.studyNo})'>지원자보기</button>
-				</td>
+				<td>${applyVO.studyNo }</td>
+				<td class="applyNo">${applyVO.applyNo }</td>
+				<td>${applyVO.applyWriter }</td>
+				<td>${userMap.get(applyVO.applyWriter).getUserGender() }</td>
+				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${applyVO.applyDate }"/></td>
 			</tr>			
 		</c:forEach>
 	</table>
 	<script>
 		$(function() { // onready - html의 body 부분의 내용이 다 로딩되면 동작되도록 한다.
-			// 데이터 한줄 클릭하면 스터디 보기로 이동되는 이벤트 처리
+			// 데이터 한줄 클릭하면 지원서 보기로 이동되는 이벤트 처리
 			$(".rowdata").click(function() { // rowdata 클래스가 클릭되면 function 실행
-				location = '/study/view?studyNo=' + $(this).find(".studyNo").text();
+				location = '/study/applyView?applyNo=' + $(this).find(".applyNo").text();
 			});
 		});
-		
-		function applyList(studyNo) {
-			location = '/study/applyList?studyNo=' + studyNo; 
-		}
 	</script>
 	</c:if>
 </body>

@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.studywithme.domain.ApplyCountVO;
 import com.studywithme.domain.ApplyDTO;
+import com.studywithme.domain.ApplyVO;
 import com.studywithme.domain.StudyDTO;
 import com.studywithme.domain.StudyVO;
 import com.studywithme.domain.UserVO;
@@ -221,6 +222,28 @@ public class StudyController {
 		} catch (Exception e) {
 			// myList관련 오류
 			logger.info("studyService myList관련 오류");
+		}
+	}
+	
+	@RequestMapping(value = "/applyList", method = RequestMethod.GET)
+	public void applyListGET(int studyNo, Model model, HttpSession session) {
+		logger.info("applyListGET 실행");
+		
+		try {
+			List<ApplyVO> applyList = studyService.myStudyApplyList(studyNo);
+			List<UserVO> userList = studyService.myStudyApplyUserList(studyNo);
+			Map<String, UserVO> userMap = new HashMap<String, UserVO>();
+			
+			for (UserVO vo : userList) {
+				userMap.put(vo.getUserId(), vo);
+			}
+			
+			model.addAttribute("applyList", applyList);
+			model.addAttribute("userMap", userMap);
+			
+		} catch (Exception e) {
+			// applyList관련 오류
+			logger.info("studyService applyList관련 오류");
 		}
 	}
 }
