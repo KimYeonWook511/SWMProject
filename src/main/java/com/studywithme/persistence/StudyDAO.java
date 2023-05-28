@@ -20,4 +20,5 @@ public interface StudyDAO {
 	public ApplyVO readApply(int applyNo) throws Exception;
 	public List<StudyVO> myListStudy(String studyWriter) throws Exception;
 	public List<ApplyCountVO> myListStudyCountApply(String studyWriter) throws Exception;
+	public List<ApplyVO> myStudyApplyList(int studyNo) throws Exception;
 }

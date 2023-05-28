@@ -78,4 +78,10 @@ public class StudyServiceImpl implements StudyService {
 		// 나의 스터디 리스트 지원자 수 조회
 		return studyDAO.myListStudyCountApply(studyWriter);
 	}
+	
+	@Override
+	public List<ApplyVO> myStudyApplyList(int studyNo) throws Exception {
+		// 나의 스터디 지원자 리스트 조회
+		return studyDAO.myStudyApplyList(studyNo);
+	}
 }

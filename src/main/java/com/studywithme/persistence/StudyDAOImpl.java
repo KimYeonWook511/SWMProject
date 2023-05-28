@@ -79,4 +79,10 @@ public class StudyDAOImpl implements StudyDAO {
 		// 나의 스터디 리스트 지원자 수 조회
 		return sqlSession.selectList(NAMESPACE + ".myListStudyCountApply", studyWriter);
 	}
+	
+	@Override
+	public List<ApplyVO> myStudyApplyList(int studyNo) throws Exception {
+		// 나의 스터디 지원자 리스트 조회
+		return sqlSession.selectList(NAMESPACE + ".myStudyApplyList", studyNo);
+	}
 }

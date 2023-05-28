@@ -55,4 +55,10 @@
 		  ]]>
 	</select>
 	
+	<select id="myStudyApplyList" resultType="com.studywithme.domain.ApplyVO">
+		<![CDATA[
+		select * from apply_info where studyNo = #{studyNo} order by applyDate desc
+		]]>
+	</select>
+	
 </mapper>
