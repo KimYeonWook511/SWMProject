@@ -69,4 +69,9 @@
 		    on a.studyNo = #{studyNo} and u.userId = a.applyWriter;
 		]]>
 	</select>
+	
+	<select id="applyCheck" resultType="com.studywithme.domain.ApplyVO">
+		select * from apply_info where studyNo = #{studyNo} and applyWriter = #{applyWriter}
+	</select>
+	
 </mapper>

@@ -91,4 +91,10 @@ public class StudyServiceImpl implements StudyService {
 		// 나의 스터디 지원자 정보 리스트 조회
 		return studyDAO.myStudyApplyUserList(studyNo);
 	}
+	
+	@Override
+	public ApplyVO applyCheck(ApplyDTO applyDTO) throws Exception {
+		// 스터디 지원 이력 조회
+		return studyDAO.applyCheck(applyDTO);
+	}
 }
