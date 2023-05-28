@@ -24,4 +24,6 @@ public interface StudyService {
 	public List<ApplyVO> myStudyApplyList(int studyNo) throws Exception;
 	public List<UserVO> myStudyApplyUserList(int studyNo) throws Exception;
 	public ApplyVO applyCheck(ApplyDTO applyDTO) throws Exception;
+	public void applyPass(int applyNo) throws Exception;
+	public void applyFail(int applyNo) throws Exception;
 }

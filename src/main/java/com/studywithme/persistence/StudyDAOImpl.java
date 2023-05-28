@@ -98,4 +98,16 @@ public class StudyDAOImpl implements StudyDAO {
 		// 스터디 지원 이력 조회
 		return (ApplyVO)sqlSession.selectOne(NAMESPACE + ".applyCheck", applyDTO);
 	}
+	
+	@Override
+	public void applyPass(int applyNo) throws Exception {
+		// 스터디 지원서 통과(합격)
+		sqlSession.update(NAMESPACE + ".applyPass", applyNo);
+	}
+	
+	@Override
+	public void applyFail(int applyNo) throws Exception {
+		// 스터디 지원서 탈락(불합격)
+		sqlSession.update(NAMESPACE + ".applyFail", applyNo);
+	}
 }

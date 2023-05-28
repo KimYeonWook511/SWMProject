@@ -9,6 +9,7 @@ public class ApplyVO {
 	private String applyContent;
 	private String applyWriter;
 	private Date applyDate;
+	private int applyState;
 
 	public int getApplyNo() {
 		return applyNo;
@@ -54,9 +55,17 @@ public class ApplyVO {
 		this.applyDate = applyDate;
 	}
 
+	public int getApplyState() {
+		return applyState;
+	}
+
+	public void setApplyState(int applyState) {
+		this.applyState = applyState;
+	}
+
 	@Override
 	public String toString() {
 		return "ApplyVO [applyNo=" + applyNo + ", studyNo=" + studyNo + ", applyContent=" + applyContent
-				+ ", applyWriter=" + applyWriter + ", applyDate=" + applyDate + "]";
+				+ ", applyWriter=" + applyWriter + ", applyDate=" + applyDate + ", applyState=" + applyState + "]";
 	}
 }

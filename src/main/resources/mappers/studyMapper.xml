@@ -74,4 +74,12 @@
 		select * from apply_info where studyNo = #{studyNo} and applyWriter = #{applyWriter}
 	</select>
 	
+	<update id="applyPass">
+		update apply_info set applyState = 1 where applyNo = #{applyNo}
+	</update>
+	
+	<update id="applyFail">
+		update apply_info set applyState = 0 where applyNo = #{applyNo}
+	</update>
+	
 </mapper>
