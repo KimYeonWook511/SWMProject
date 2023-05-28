@@ -268,4 +268,50 @@ public class StudyController {
 			logger.info("readApply중 오류");
 		}
 	}
+	
+	@RequestMapping(value = "/applyPass", method = RequestMethod.POST)
+	public void applyPassPOST(int applyNo, HttpServletRequest request, HttpServletResponse response) {
+		logger.info("applyPassPOST 실행");
+		
+		try {
+			studyService.applyPass(applyNo);
+			
+		} catch (Exception e) {
+			// 스터디 합격 중 오류
+			logger.info("applyPass 오류");
+		}
+		
+		try {
+			PrintWriter out = response.getWriter();
+			out.println("<script>window.close();opener.parent.location.reload();</script>");
+			out.flush();
+			
+		} catch (Exception e) {
+			// 스크립트 오류
+			logger.info("PrintWriter 오류");
+		}
+	}
+	
+	@RequestMapping(value = "/applyFail", method = RequestMethod.POST)
+	public void applyFailPOST(int applyNo, HttpServletRequest request, HttpServletResponse response) {
+		logger.info("applyPassPOST 실행");
+		
+		try {
+			studyService.applyFail(applyNo);
+			
+		} catch (Exception e) {
+			// 스터디 불합격 중 오류
+			logger.info("applyFail 오류");
+		}
+		
+		try {
+			PrintWriter out = response.getWriter();
+			out.println("<script>window.close();opener.parent.location.reload();</script>");
+			out.flush();
+			
+		} catch (Exception e) {
+			// 스크립트 오류
+			logger.info("PrintWriter 오류");
+		}
+	}
 }

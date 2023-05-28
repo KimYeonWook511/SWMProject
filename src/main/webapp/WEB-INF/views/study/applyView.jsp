@@ -52,7 +52,7 @@
 						</tr>
 					</table>
 					<button type="button" class="btn btn-default pull-right pass">합격</button>
-					<button type="button" class="btn btn-default pull-right fail" onclick="window.close();">불합격</button>
+					<button type="button" class="btn btn-default pull-right fail">불합격</button>
 				</div>
 			</form>	
 		</div>
@@ -60,14 +60,16 @@
 			$(document).ready(function() {
 				var formObj = $("form[role='form']");
 				
-				$(".apply").on("click", function() {
-					if (!confirm("지원하시겠습니까?")) return;
-					formObj.attr("action", "/study/apply.do");
+				$(".pass").on("click", function() {
+					if (!confirm("합격시키겠습니까?")) return;
+					formObj.attr("action", "/study/applyPass");
 					formObj.submit();
 				});
 				
-				$(".cancel").on("click", function() {
-					window.close();
+				$(".fail").on("click", function() {
+					if (!confirm("불합격시키겠습니까?")) return;
+					formObj.attr("action", "/study/applyFail");
+					formObj.submit();
 				});
 			});
 		</script>
