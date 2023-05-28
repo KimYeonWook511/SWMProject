@@ -44,9 +44,13 @@
 		$(function() { // onready - html의 body 부분의 내용이 다 로딩되면 동작되도록 한다.
 			// 데이터 한줄 클릭하면 지원서 보기로 이동되는 이벤트 처리
 			$(".rowdata").click(function() { // rowdata 클래스가 클릭되면 function 실행
-				location = '/study/applyView?applyNo=' + $(this).find(".applyNo").text();
+				popup($(this).find(".applyNo").text());
 			});
 		});
+		
+		function popup(applyNo) {
+			window.open("/study/applyView?applyNo=" + applyNo, "스터디 지원서", "width=500,height=590,location=no,status=no,scrollbars=yes");
+		}
 	</script>
 	</c:if>
 </body>

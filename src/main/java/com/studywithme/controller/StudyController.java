@@ -246,4 +246,19 @@ public class StudyController {
 			logger.info("studyService applyList관련 오류");
 		}
 	}
+	
+	@RequestMapping(value = "/applyView", method = RequestMethod.GET)
+	public void applyViewGET(int applyNo, Model model) {
+		logger.info("applyViewGET 실행");
+		
+		try {
+			ApplyVO applyVO = studyService.readApply(applyNo);
+			
+			model.addAttribute("applyVO", applyVO);
+			
+		} catch (Exception e) {
+			// readApply 오류
+			logger.info("readApply중 오류");
+		}
+	}
 }
