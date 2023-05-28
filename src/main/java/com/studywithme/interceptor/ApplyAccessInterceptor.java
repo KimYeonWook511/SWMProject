@@ -11,8 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.studywithme.domain.ApplyAccessVO;
-import com.studywithme.domain.ApplyDTO;
-import com.studywithme.domain.ApplyVO;
 import com.studywithme.domain.UserVO;
 import com.studywithme.service.StudyService;
 
