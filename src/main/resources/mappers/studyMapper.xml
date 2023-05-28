@@ -47,11 +47,11 @@
 	
 	<select id="myListStudyCountApply" resultType="com.studywithme.domain.ApplyCountVO">
 		<![CDATA[	  
-		  select s.studyNo, ifnull(cnt, 0) as applyCount
-		    from (select * from study_info where studyWriter = #{studyWriter}) as s
-		    left join (select studyNo, count(*) cnt from apply_info group by studyNo) as a
-		    on s.studyNo = a.studyNo
-		    order by studyWriteDate desc
+		select s.studyNo, ifnull(cnt, 0) as applyCount
+	      from (select * from study_info where studyWriter = #{studyWriter}) as s
+		  left join (select studyNo, count(*) cnt from apply_info group by studyNo) as a
+		  on s.studyNo = a.studyNo
+		  order by studyWriteDate desc
 		]]>
 	</select>
 	
@@ -63,10 +63,10 @@
 	
 	<select id="myStudyApplyUserList" resultType="com.studywithme.domain.UserVO">
 		<![CDATA[	  
-		  select userId, userGender
-		    from user_info as u 
-		    inner join apply_info as a 
-		    on a.studyNo = #{studyNo} and u.userId = a.applyWriter;
+	    select userId, userGender
+		  from user_info as u 
+		  inner join apply_info as a 
+		  on a.studyNo = #{studyNo} and u.userId = a.applyWriter
 		]]>
 	</select>
 	
@@ -81,5 +81,14 @@
 	<update id="applyFail">
 		update apply_info set applyState = 0 where applyNo = #{applyNo}
 	</update>
+	
+	<select id="applyAccess" resultType="com.studywithme.domain.ApplyAccessVO">
+		<![CDATA[	  
+   		select studyWriter, applyWriter 
+   		  from study_info as s 
+   		  inner join apply_info as a
+   		  on applyNo = #{applyNo} and s.studyNo = a.studyNo
+		]]>
+	</select>
 	
 </mapper>
