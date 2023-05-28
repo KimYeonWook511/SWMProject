@@ -37,6 +37,10 @@
 		<level value="info" />
 	</logger>
 	
+	<logger name="com.studywithme.interceptor">
+		<level value="info" />
+	</logger>
+	
 	<!-- SQL -->
 	<!-- SQL 쿼리 문장에 대한 로그(전달인자 포함한 문장) // additivity 옵션은 로깅 메시지 중복을 방지-->
 	<logger name="jdbc.sqlonly" additivity="false">
