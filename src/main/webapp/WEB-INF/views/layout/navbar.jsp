@@ -37,6 +37,7 @@
 						<c:if test="${not empty loginVO}">
 							<li><a href="/study/write">스터디 모집하기</a></li>
 							<li><a href="/study/myStudyList">나의 스터디 모집 리스트</a></li>
+							<li><a href="/study/myApplyList">나의 지원서 리스트</a></li>
 						</c:if>
 					</ul>
 				</li>

@@ -341,4 +341,28 @@ public class StudyController {
 			logger.info("PrintWriter 오류");
 		}
 	}
+	
+	@RequestMapping(value = "/myApplyList", method = RequestMethod.GET)
+	public void myApplyListGET(Model model, HttpSession session) {
+		logger.info("myApplyListGET 실행");
+		
+		String applyWriter = ((UserVO)session.getAttribute("loginVO")).getUserId();
+		
+		try {
+			List<ApplyVO> applyList = studyService.myListApply(applyWriter);
+			List<StudyVO> studyList = studyService.myApplyStudyList(applyWriter);
+			Map<Integer, StudyVO> studyMap = new HashMap<Integer, StudyVO>();
+			
+			for (StudyVO vo : studyList) {
+				studyMap.put(vo.getStudyNo(), vo);
+			}
+			
+			model.addAttribute("applyList", applyList);
+			model.addAttribute("studyMap", studyMap);
+			
+		} catch (Exception e) {
+			// 나의 지원서 리스트 조회 오류
+			logger.info("myApplyList 중 오류");
+		}
+	}
 }
