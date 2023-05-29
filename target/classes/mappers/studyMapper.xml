@@ -110,4 +110,8 @@
 		]]>
 	</select>
 	
+	
+	<delete id="deleteStudyApply">
+		delete from apply_info where studyNo = #{studyNo}
+	</delete>
 </mapper>

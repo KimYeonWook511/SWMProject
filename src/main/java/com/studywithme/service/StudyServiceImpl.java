@@ -134,4 +134,10 @@ public class StudyServiceImpl implements StudyService {
 		// 지원한 스터디 정보 조회
 		return studyDAO.myApplyStudyList(applyWriter);
 	}
+	
+	@Override
+	public void deleteStudyApply(int studyNo) throws Exception {
+		// 스터디 공고 삭제시 지원서까지 삭제
+		studyDAO.deleteStudyApply(studyNo);
+	}
 }
