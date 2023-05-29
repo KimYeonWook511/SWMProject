@@ -318,4 +318,27 @@ public class StudyController {
 		}
 	}
 	
+
+	@RequestMapping(value = "/applyDelete", method = RequestMethod.POST)
+	public void applyDeletePOST(int applyNo, HttpServletResponse response) {
+		logger.info("applyDeletePOST 실행");
+		
+		try {
+			studyService.applyDelete(applyNo);
+			
+		} catch (Exception e) {
+			// 스터디 지원서 삭제 중 오류
+			logger.info("applyDelete 오류");
+		}
+		
+		try {
+			PrintWriter out = response.getWriter();
+			out.println("<script>window.close();opener.parent.location.reload();</script>");
+			out.flush();
+			
+		} catch (Exception e) {
+			// 스크립트 오류
+			logger.info("PrintWriter 오류");
+		}
+	}
 }
