@@ -43,6 +43,7 @@
 			<mapping path="/study/apply"/>
 			<mapping path="/study/apply.do"/>
 			<mapping path="/study/myStudyList"/>
+			<mapping path="/study/myApplyList"/>
 			<mapping path="/study/applyList"/>
 			<mapping path="/study/applyView"/>
 			<mapping path="/study/applyPass"/>
