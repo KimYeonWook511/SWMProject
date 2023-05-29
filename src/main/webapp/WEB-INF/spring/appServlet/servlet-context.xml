@@ -80,4 +80,13 @@
 		</interceptor>
 	</interceptors>
 	
+	<beans:bean id="applyPassFailInterceptor" class="com.studywithme.interceptor.ApplyPassFailInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/study/applyPass"/>
+			<mapping path="/study/applyFail"/>
+			<beans:ref bean="applyPassFailInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
