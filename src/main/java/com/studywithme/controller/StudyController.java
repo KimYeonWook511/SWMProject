@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.studywithme.domain.ApplyAccessVO;
 import com.studywithme.domain.ApplyCountVO;
 import com.studywithme.domain.ApplyDTO;
 import com.studywithme.domain.ApplyVO;
@@ -260,8 +261,10 @@ public class StudyController {
 		
 		try {
 			ApplyVO applyVO = studyService.readApply(applyNo);
+			ApplyAccessVO applyAccessVO = studyService.applyAccess(applyNo);
 			
 			model.addAttribute("applyVO", applyVO);
+			model.addAttribute("applyAccessVO", applyAccessVO);
 			
 		} catch (Exception e) {
 			// readApply ¿À·ù

@@ -51,8 +51,18 @@
 							<td>${applyVO.getReplApplyContent() }</td>
 						</tr>
 					</table>
-					<button type="button" class="btn btn-default pull-right pass">합격</button>
-					<button type="button" class="btn btn-default pull-right fail">불합격</button>
+					<c:if test="${loginVO.userId.equals(applyAccessVO.studyWriter) }">
+						<button type="button" class="btn btn-default pull-right pass">합격</button>
+						<button type="button" class="btn btn-default pull-right fail">불합격</button>
+					</c:if>
+					<c:if test="${loginVO.userId.equals(applyAccessVO.applyWriter) }">
+						<button type="button" class="btn btn-default pull-right delete">지원취소</button>
+					</c:if>
+					<c:if test="${loginVO.userAuthority.equals('admin') }">
+						<button type="button" class="btn btn-default pull-right pass">합격</button>
+						<button type="button" class="btn btn-default pull-right fail">불합격</button>
+						<button type="button" class="btn btn-default pull-right delete">지원취소</button>
+					</c:if>
 				</div>
 			</form>	
 		</div>
@@ -69,6 +79,12 @@
 				$(".fail").on("click", function() {
 					if (!confirm("불합격시키겠습니까?")) return;
 					formObj.attr("action", "/study/applyFail");
+					formObj.submit();
+				});
+				
+				$(".delete").on("click", function() {
+					if (!confirm("지원을 취소하시겠습니까?")) return;
+					formObj.attr("action", "/study/applyDelete");
 					formObj.submit();
 				});
 			});
