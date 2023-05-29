@@ -116,4 +116,10 @@ public class StudyServiceImpl implements StudyService {
 		// 스터디 지원서 접근 회원 조회
 		return studyDAO.applyAccess(applyNo);
 	}
+	
+	@Override
+	public void applyDelete(int applyNo) throws Exception {
+		// 스터디 지원서 삭제
+		studyDAO.applyDelete(applyNo);
+	}
 }

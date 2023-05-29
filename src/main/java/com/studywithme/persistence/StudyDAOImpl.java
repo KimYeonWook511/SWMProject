@@ -117,4 +117,10 @@ public class StudyDAOImpl implements StudyDAO {
 		// 스터디 지원서 접근 회원 조회
 		return (ApplyAccessVO)sqlSession.selectOne(NAMESPACE + ".applyAccess", applyNo);
 	}
+	
+	@Override
+	public void applyDelete(int applyNo) throws Exception {
+		// 스터디 지원서 삭제
+		sqlSession.delete(NAMESPACE + ".applyDelete", applyNo);
+	}
 }

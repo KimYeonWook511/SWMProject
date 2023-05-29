@@ -91,4 +91,8 @@
 		]]>
 	</select>
 	
+	<delete id="applyDelete">
+		delete from apply_info where applyNo = #{applyNo}
+	</delete>
+	
 </mapper>

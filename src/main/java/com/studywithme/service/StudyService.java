@@ -28,4 +28,5 @@ public interface StudyService {
 	public void applyPass(int applyNo) throws Exception;
 	public void applyFail(int applyNo) throws Exception;
 	public ApplyAccessVO applyAccess(int applyNo) throws Exception;
+	public void applyDelete(int applyNo) throws Exception;
 }
