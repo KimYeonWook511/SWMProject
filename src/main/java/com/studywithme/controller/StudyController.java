@@ -75,6 +75,7 @@ public class StudyController {
 				studyService.viewCountStudy(studyNo);
 			
 			StudyVO studyVO = studyService.readStudy(studyNo);
+			
 			model.addAttribute("studyVO", studyVO);
 			
 //			// 쿠키를 활용한 조회수

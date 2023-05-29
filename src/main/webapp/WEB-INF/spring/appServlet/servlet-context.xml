@@ -98,4 +98,12 @@
 		</interceptor>
 	</interceptors>
 	
+	<beans:bean id="numberCheckInterceptor" class="com.studywithme.interceptor.NumberCheckInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/study/view"/>
+			<beans:ref bean="numberCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
