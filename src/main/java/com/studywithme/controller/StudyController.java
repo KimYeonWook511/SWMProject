@@ -129,7 +129,8 @@ public class StudyController {
 		
 		try {
 			studyService.deleteStudy(studyNo);
-			logger.info("삭제된 스터디 번호 : " + studyNo);
+			studyService.deleteStudyApply(studyNo);
+			
 			return "redirect:/study/list";
 			
 		} catch (Exception e) {
