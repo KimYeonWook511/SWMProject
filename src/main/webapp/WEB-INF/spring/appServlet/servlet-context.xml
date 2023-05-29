@@ -42,7 +42,7 @@
 			<mapping path="/study/delete"/>
 			<mapping path="/study/apply"/>
 			<mapping path="/study/apply.do"/>
-			<mapping path="/study/myList"/>
+			<mapping path="/study/myStudyList"/>
 			<mapping path="/study/applyList"/>
 			<mapping path="/study/applyView"/>
 			<mapping path="/study/applyPass"/>

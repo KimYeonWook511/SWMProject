@@ -203,9 +203,9 @@ public class StudyController {
 		}
 	}
 	
-	@RequestMapping(value = "/myList", method = RequestMethod.GET)
+	@RequestMapping(value = "/myStudyList", method = RequestMethod.GET)
 	public void myListGET(Model model, HttpSession session) {
-		logger.info("myListGET 실행");
+		logger.info("myStudyListGET 실행");
 		
 		String studyWriter = ((UserVO)session.getAttribute("loginVO")).getUserId();
 		
