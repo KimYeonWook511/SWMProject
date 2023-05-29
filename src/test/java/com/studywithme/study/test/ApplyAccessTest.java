@@ -17,7 +17,7 @@ public class ApplyAccessTest {
 	private StudyDAO dao;
 	
 	@Test
-	public void applyCheckTest() {
+	public void applyAccessTest() {
 		try {
 			System.out.println(dao.applyAccess(3));
 			

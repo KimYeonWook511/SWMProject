@@ -17,7 +17,7 @@ public class ApplyFailTest {
 	private StudyDAO dao;
 	
 	@Test
-	public void applyCheckTest() {
+	public void applyFailTest() {
 		try {
 			dao.applyFail(1);
 			

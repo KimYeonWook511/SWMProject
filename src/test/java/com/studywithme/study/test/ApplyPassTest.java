@@ -17,7 +17,7 @@ public class ApplyPassTest {
 	private StudyDAO dao;
 	
 	@Test
-	public void applyCheckTest() {
+	public void applyPassTest() {
 		try {
 			dao.applyPass(1);
 			
