@@ -89,4 +89,12 @@
 		</interceptor>
 	</interceptors>
 	
+	<beans:bean id="applyDeleteInterceptor" class="com.studywithme.interceptor.ApplyDeleteInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/study/applyDelete"/>
+			<beans:ref bean="applyDeleteInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
