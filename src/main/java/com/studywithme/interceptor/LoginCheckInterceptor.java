@@ -20,7 +20,8 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 		
 		logger.info("LoginCheck preHandle 실행");
 		
-		String requestURI = request.getRequestURI();
+//		String requestURI = request.getRequestURI();
+		
 		UserVO vo = (UserVO)request.getSession().getAttribute("loginVO");			
 		
 		if (vo == null) {
@@ -28,7 +29,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 			logger.info("로그인 상태가 아님");
 			
 			request.setAttribute("msg", 1);
-			request.setAttribute("redirectURL", requestURI);
+//			request.setAttribute("redirectURL", requestURI);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/user/login");
 			dispatcher.forward(request, response);
 			

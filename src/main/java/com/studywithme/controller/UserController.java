@@ -99,7 +99,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/loginPOST", method = RequestMethod.POST)
-	public String loginPOST(@ModelAttribute UserDTO dto, RedirectAttributes rttr, HttpSession session, String redirectURL) throws Exception {
+	public String loginPOST(@ModelAttribute UserDTO dto, RedirectAttributes rttr, HttpSession session, 
+			String redirectURL, String studyNo, String applyNo) throws Exception {
 		logger.info("loginPOST 실행");
 		
 		UserVO vo = userService.loginUser(dto); 
@@ -121,16 +122,18 @@ public class UserController {
 			// 로그인 성공
 			session.setAttribute("loginVO", vo);
 			
-			if (redirectURL.equals("")) {
-				// 메인 화면으로 리다이렉트
-				rttr.addFlashAttribute("loginResult", 1);
-				return "redirect:/";
-				
-			} else {
-				// 이전 주소로 리다이렉트
-				System.out.println(redirectURL);
-				return "redirect:" + redirectURL;
-			}
+			rttr.addFlashAttribute("loginResult", 1);
+			return "redirect:/";
+			
+//			if (redirectURL.equals("")) {
+//				// 메인 화면으로 리다이렉트
+//				rttr.addFlashAttribute("loginResult", 1);
+//				return "redirect:/";
+//				
+//			} else {
+//				 이전 주소로 리다이렉트
+//				return "redirect:" + redirectURL;
+//			}
 		}
 	}
 	
