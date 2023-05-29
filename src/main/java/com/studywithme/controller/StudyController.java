@@ -273,7 +273,7 @@ public class StudyController {
 	}
 	
 	@RequestMapping(value = "/applyPass", method = RequestMethod.POST)
-	public void applyPassPOST(int applyNo, HttpServletRequest request, HttpServletResponse response) {
+	public void applyPassPOST(int applyNo, HttpServletResponse response) {
 		logger.info("applyPassPOST 실행");
 		
 		try {
@@ -296,7 +296,7 @@ public class StudyController {
 	}
 	
 	@RequestMapping(value = "/applyFail", method = RequestMethod.POST)
-	public void applyFailPOST(int applyNo, HttpServletRequest request, HttpServletResponse response) {
+	public void applyFailPOST(int applyNo, HttpServletResponse response) {
 		logger.info("applyPassPOST 실행");
 		
 		try {
@@ -317,4 +317,5 @@ public class StudyController {
 			logger.info("PrintWriter 오류");
 		}
 	}
+	
 }
