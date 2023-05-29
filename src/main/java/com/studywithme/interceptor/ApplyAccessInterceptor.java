@@ -37,9 +37,11 @@ public class ApplyAccessInterceptor extends HandlerInterceptorAdapter {
 		ApplyAccessVO applyAccessVO = studyService.applyAccess(Integer.parseInt(request.getParameter("applyNo")));
 		String userId = loginVO.getUserId();
 		
-		if (userId.equals(applyAccessVO.getApplyWriter()) || userId.equals(applyAccessVO.getStudyWriter())) {
-			// 스터디 지원서 접근 가능
-			return true;
+		if (applyAccessVO != null) {
+			if (userId.equals(applyAccessVO.getApplyWriter()) || userId.equals(applyAccessVO.getStudyWriter())) {
+				// 스터디 지원서 접근 가능
+				return true;
+			}
 		}
 		
 		response.setContentType("text/html; charset=utf-8");
