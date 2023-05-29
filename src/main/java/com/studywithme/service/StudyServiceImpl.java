@@ -140,4 +140,10 @@ public class StudyServiceImpl implements StudyService {
 		// 스터디 공고 삭제시 지원서까지 삭제
 		studyDAO.deleteStudyApply(studyNo);
 	}
+	
+	@Override
+	public List<UserVO> passMemberList(int studyNo) throws Exception {
+		// 합격자 유저(멤버) 정보 리스트
+		return studyDAO.passMemberList(studyNo);
+	}
 }

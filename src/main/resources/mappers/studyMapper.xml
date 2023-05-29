@@ -110,8 +110,17 @@
 		]]>
 	</select>
 	
-	
 	<delete id="deleteStudyApply">
 		delete from apply_info where studyNo = #{studyNo}
 	</delete>
+	
+	<select id="passMemberList" resultType="com.studywithme.domain.UserVO">
+		<![CDATA[
+		select userId, userName, userGender, userAddress, userCallNumber 
+		  from user_info as u
+		  inner join apply_info as a
+		  on studyNo = #{studyNo} and applyState = 1 and u.userId = a.applyWriter 
+		]]>
+	</select>
+	
 </mapper>
