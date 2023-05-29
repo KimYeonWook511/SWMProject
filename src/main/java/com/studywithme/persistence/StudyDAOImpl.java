@@ -123,4 +123,10 @@ public class StudyDAOImpl implements StudyDAO {
 		// 스터디 지원서 삭제
 		sqlSession.delete(NAMESPACE + ".applyDelete", applyNo);
 	}
+	
+	@Override
+	public List<ApplyVO> myListApply(String applyWriter) throws Exception {
+		// 나의 지원서 리스트 조회
+		return sqlSession.selectList(NAMESPACE + ".myListApply", applyWriter);
+	}
 }

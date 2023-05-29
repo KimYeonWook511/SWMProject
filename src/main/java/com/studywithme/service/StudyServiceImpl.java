@@ -122,4 +122,10 @@ public class StudyServiceImpl implements StudyService {
 		// 스터디 지원서 삭제
 		studyDAO.applyDelete(applyNo);
 	}
+	
+	@Override
+	public List<ApplyVO> myListApply(String applyWriter) throws Exception {
+		// 나의 지원서 리스트 조회
+		return studyDAO.myListApply(applyWriter);
+	}
 }

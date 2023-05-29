@@ -95,4 +95,10 @@
 		delete from apply_info where applyNo = #{applyNo}
 	</delete>
 	
+	<select id="myListApply" resultType="com.studywithme.domain.ApplyVO">
+		<![CDATA[
+		select * from apply_info where applyWriter = #{applyWriter} order by applyDate desc
+		]]>
+	</select>
+	
 </mapper>

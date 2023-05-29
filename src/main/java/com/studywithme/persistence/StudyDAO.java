@@ -29,4 +29,5 @@ public interface StudyDAO {
 	public void applyFail(int applyNo) throws Exception;
 	public ApplyAccessVO applyAccess(int applyNo) throws Exception;
 	public void applyDelete(int applyNo) throws Exception;
+	public List<ApplyVO> myListApply(String applyWriter) throws Exception;
 }
