@@ -30,4 +30,5 @@ public interface StudyDAO {
 	public ApplyAccessVO applyAccess(int applyNo) throws Exception;
 	public void applyDelete(int applyNo) throws Exception;
 	public List<ApplyVO> myListApply(String applyWriter) throws Exception;
+	public List<StudyVO> myApplyStudyList(String applyWriter) throws Exception;
 }

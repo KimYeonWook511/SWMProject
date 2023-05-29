@@ -129,4 +129,10 @@ public class StudyDAOImpl implements StudyDAO {
 		// 나의 지원서 리스트 조회
 		return sqlSession.selectList(NAMESPACE + ".myListApply", applyWriter);
 	}
+	
+	@Override
+	public List<StudyVO> myApplyStudyList(String applyWriter) throws Exception {
+		// 지원한 스터디 정보 조회 (리스트)
+		return sqlSession.selectList(NAMESPACE + ".myApplyStudyList", applyWriter);
+	}
 }

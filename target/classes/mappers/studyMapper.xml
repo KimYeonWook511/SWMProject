@@ -101,4 +101,13 @@
 		]]>
 	</select>
 	
+	<select id="myApplyStudyList" resultType="com.studywithme.domain.StudyVO">
+		<![CDATA[
+		select s.studyNo, studyTitle
+		  from study_info as s
+		  inner join apply_info as a
+		  on applyWriter = #{applyWriter} and s.studyNo = a.studyNo
+		]]>
+	</select>
+	
 </mapper>
