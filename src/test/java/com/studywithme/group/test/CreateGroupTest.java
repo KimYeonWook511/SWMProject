@@ -26,6 +26,8 @@ public class CreateGroupTest {
 			dto.setGroupExplain("그룹설명 테스트");
 			dao.createGroup(dto);
 			
+			System.out.println(dto.getGroupNo());
+			
 		} catch (Exception e) {
 			System.out.println("실패");
 		}
