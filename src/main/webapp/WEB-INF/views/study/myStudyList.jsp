@@ -25,11 +25,12 @@
 	<table class="table table-bordered">
 		<tr>
 			<th style="width: 60px">번호</th>
-			<th>제목</th>
-			<th>작성자</th>
+			<th style="width: 600px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">제목</th>
+			<th style="width: 180px">작성자</th>
 			<th>조회수</th>
 			<th>게시일</th>
 			<th>지원자수</th>
+			<th style="width: 120px">그룹등록</th>
 		</tr>
 		<c:forEach items="${studyList }" var="studyVO">
 			<tr class="rowdata">
@@ -40,6 +41,7 @@
 				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${studyVO.studyWriteDate }"/></td>
 				<td>${applyCountMap.get(studyVO.studyNo) }<button type="button" class="btn btn-default pull-right applyList" onclick='event.stopPropagation();applyList(${studyVO.studyNo})'>지원자보기</button>
 				</td>
+				<td><button type="button" class="btn btn-default pull-right registerGroup" onclick='event.stopPropagation();popup(${studyVO.studyNo})'>그룹등록</button></td>
 			</tr>			
 		</c:forEach>
 	</table>
@@ -53,6 +55,10 @@
 		
 		function applyList(studyNo) {
 			location = '/study/applyList?studyNo=' + studyNo; 
+		}
+		
+		function popup(studyNo) {
+			window.open("/study/registerGroup?studyNo=" + studyNo, "스터디 그룹 등록", "width=500,height=590,location=no,status=no,scrollbars=yes");
 		}
 	</script>
 	</c:if>
