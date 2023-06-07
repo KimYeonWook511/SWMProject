@@ -63,7 +63,7 @@
 	
 	<select id="myStudyApplyUserList" resultType="com.studywithme.domain.UserVO">
 		<![CDATA[	  
-	    select userId, userGender
+	    select userId, userName, userGender, userCallNumber
 		  from user_info as u 
 		  inner join apply_info as a 
 		  on a.studyNo = #{studyNo} and u.userId = a.applyWriter
