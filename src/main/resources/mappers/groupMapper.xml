@@ -8,4 +8,9 @@
 		values (#{groupName}, #{groupLeader}, #{groupExplain})		
 	</insert>
 	
+	<insert id="createMember">
+		insert into group_member (groupNo, userId, userName, userGender, userCallNumber)
+		values (#{groupNo}, #{userId}, #{userName}, #{userGender}, #{userCallNumber})
+	</insert>
+	
 </mapper>
