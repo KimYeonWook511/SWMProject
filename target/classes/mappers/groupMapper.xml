@@ -3,9 +3,9 @@
 
 <mapper namespace="com.studywithme.mappers.groupMapper">
 
-	<insert id="createGroup">
+	<insert id="createGroup" useGeneratedKeys="true" keyProperty="groupNo">
 		insert into group_info (groupName, groupLeader, groupExplain)
-		values (#{groupName}, #{groupLeader}, #{groupExplain})		
+		values (#{groupName}, #{groupLeader}, #{groupExplain})
 	</insert>
 	
 	<insert id="createMember">
