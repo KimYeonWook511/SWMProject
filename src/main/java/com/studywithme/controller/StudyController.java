@@ -244,7 +244,7 @@ public class StudyController {
 			}
 			
 			for (int i = 0; i < applyList.size(); i++) {
-				if (applyList.get(i).getApplyState() == 1) applyPassList.add(applyList.remove(i));
+				if (applyList.get(i).getApplyState() == 1) applyPassList.add(applyList.remove(i--));
 			}
 			
 			model.addAttribute("applyPassList", applyPassList);
