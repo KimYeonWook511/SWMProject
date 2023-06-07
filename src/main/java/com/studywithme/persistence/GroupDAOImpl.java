@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.studywithme.domain.GroupDTO;
-import com.studywithme.domain.UserVO;
+import com.studywithme.domain.MemberDTO;
 
 @Repository
 public class GroupDAOImpl implements GroupDAO {
@@ -24,10 +24,10 @@ public class GroupDAOImpl implements GroupDAO {
 	}
 	
 	@Override
-	public void createMember(List<UserVO> userList) throws Exception {
+	public void createMember(List<MemberDTO> memberList) throws Exception {
 		// 스터디 그룹원 생성
-		for (UserVO vo : userList) {
-			sqlSession.insert(NAMESPACE + ".createMember", vo);
+		for (MemberDTO dto : memberList) {
+			sqlSession.insert(NAMESPACE + ".createMember", dto);
 		}
 	}
 }

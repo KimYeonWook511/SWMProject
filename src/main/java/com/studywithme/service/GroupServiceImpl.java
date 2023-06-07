@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.studywithme.domain.GroupDTO;
-import com.studywithme.domain.UserVO;
+import com.studywithme.domain.MemberDTO;
 import com.studywithme.persistence.GroupDAO;
 
 @Service
@@ -23,8 +23,8 @@ public class GroupServiceImpl implements GroupService {
 	}
 	
 	@Override
-	public void createMember(List<UserVO> userList) throws Exception {
+	public void createMember(List<MemberDTO> memberList) throws Exception {
 		// 스터디 그룹원 생성
-		groupDAO.createMember(userList);
+		groupDAO.createMember(memberList);
 	}
 }
