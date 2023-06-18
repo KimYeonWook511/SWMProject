@@ -25,9 +25,12 @@ import com.studywithme.domain.ApplyAccessVO;
 import com.studywithme.domain.ApplyCountVO;
 import com.studywithme.domain.ApplyDTO;
 import com.studywithme.domain.ApplyVO;
+import com.studywithme.domain.GroupDTO;
+import com.studywithme.domain.MemberDTO;
 import com.studywithme.domain.StudyDTO;
 import com.studywithme.domain.StudyVO;
 import com.studywithme.domain.UserVO;
+import com.studywithme.service.GroupService;
 import com.studywithme.service.StudyService;
 
 @Controller
@@ -38,6 +41,8 @@ public class StudyController {
 	
 	@Inject
 	private StudyService studyService;
+	@Inject
+	private GroupService groupService;
 	
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public void writeGET() {
@@ -365,6 +370,64 @@ public class StudyController {
 		} catch (Exception e) {
 			// 나의 지원서 리스트 조회 오류
 			logger.info("myApplyList 중 오류");
+		}
+	}
+	
+	@RequestMapping(value = "/registerGroup", method = RequestMethod.GET)
+	public void registerGroupGET(int studyNo, Model model) {
+		logger.info("registerGroupGET 실행");
+		
+		try {
+			StudyVO studyVO = studyService.readStudy(studyNo);
+			List<UserVO> passList = studyService.passMemberList(studyNo);
+			
+			model.addAttribute("studyVO", studyVO);
+			model.addAttribute("passList", passList);
+			
+		} catch (Exception e) {
+			// 스터디 공고 조회 혹은 스터디 합격자 조회 중 오류
+			logger.info("studyService 중 오류");
+		}
+	}
+	
+	@RequestMapping(value = "/registerGroup", method = RequestMethod.POST)
+	public void registerGroupPOST(int studyNo, GroupDTO groupDTO, HttpSession session) {
+		logger.info("registerGroupPOST 실행");
+		
+		UserVO userVO = (UserVO)session.getAttribute("loginVO");
+		groupDTO.setGroupLeader(userVO.getUserId());
+		
+		try {
+			// 스터디 그룹 생성
+			groupService.createGroup(groupDTO);
+			
+			// 스터디 그룹원 생성 (합격자)
+			List<UserVO> passList = studyService.passMemberList(studyNo);
+			List<MemberDTO> memberList = new ArrayList<MemberDTO>();
+			
+			for (UserVO vo : passList) {
+				MemberDTO dto = new MemberDTO();
+				dto.setGroupNo(groupDTO.getGroupNo());
+				dto.setUserId(vo.getUserId());
+				dto.setUserName(vo.getUserName());
+				dto.setUserGender(vo.getUserGender());
+				dto.setUserCallNumber(vo.getUserCallNumber());
+				
+				memberList.add(dto);
+			}
+			
+			// 스터디 그룹 멤버 생성
+			groupService.createMember(memberList);
+			
+			// 스터디 공고 삭제
+			studyService.deleteStudy(studyNo);
+			
+			// 스터디 지원서 삭제
+			studyService.deleteStudyApply(studyNo);
+			
+		} catch (Exception e) {
+			// 스터디 그룹 등록 중 오류
+			logger.info("registerGroup 중 오류");
 		}
 	}
 }
