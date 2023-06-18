@@ -38,10 +38,10 @@ public class RegisterGroupTest {
 			groupDTO.setGroupLeader("test");
 			
 			groupDAO.createGroup(groupDTO);
-			List<UserVO> userList = studyDAO.passMemberList(studyDTO.getStudyNo());
+			List<UserVO> passList = studyDAO.passMemberList(studyDTO.getStudyNo());
 			List<MemberDTO> memberList = new ArrayList<MemberDTO>(); 
 			
-			for (UserVO vo : userList) {
+			for (UserVO vo : passList) {
 				MemberDTO dto = new MemberDTO();
 				dto.setGroupNo(groupDTO.getGroupNo());
 				dto.setUserId(vo.getUserId());
