@@ -34,7 +34,9 @@ public class StudyInterceptor extends HandlerInterceptorAdapter {
 		
 		if (loginVO.getUserAuthority().equals("member")) {
 			// 회원 로그인
-			if (loginVO.getUserId().equals(((StudyVO)studyService.readStudy(studyNo)).getStudyWriter()))
+			StudyVO studyVO = studyService.readStudy(studyNo);
+			
+			if (studyVO != null && loginVO.getUserId().equals(studyVO.getStudyWriter()))
 				return true;
 			
 		} else if (loginVO.getUserAuthority().equals("admin")) {
