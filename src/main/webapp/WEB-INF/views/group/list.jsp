@@ -30,7 +30,7 @@
 	<c:if test="${!groupListL.isEmpty() }">
 		<table class="table table-bordered">
 			<tr>
-				<th style="width: 60px">그룹번호</th>
+				<th style="width: 80px">그룹번호</th>
 				<th style="width: 600px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">그룹명</th>
 				<th style="width: 180px">그룹장</th>
 				<th>등록일</th>
@@ -56,7 +56,7 @@
 	<c:if test="${!groupListM.isEmpty() }">
 		<table class="table table-bordered">
 			<tr>
-				<th style="width: 60px">그룹번호</th>
+				<th style="width: 80px">그룹번호</th>
 				<th style="width: 600px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">그룹명</th>
 				<th style="width: 180px">그룹장</th>
 				<th>등록일</th>
