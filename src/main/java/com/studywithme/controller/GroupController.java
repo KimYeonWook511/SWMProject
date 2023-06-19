@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.studywithme.domain.GroupMemberCountVO;
 import com.studywithme.domain.GroupVO;
+import com.studywithme.domain.MemberVO;
 import com.studywithme.domain.UserVO;
 import com.studywithme.service.GroupService;
 
@@ -54,6 +55,24 @@ public class GroupController {
 			
 		} catch (Exception e) {
 			logger.info("/group/list 오류");
+		}
+	}
+	
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	public void viewGET(int groupNo, Model model) {
+		logger.info("viewGET 실행");
+		
+		try {
+			GroupVO groupVO = groupService.readGroupInfo(groupNo);
+			List<MemberVO> memberList = groupService.readGroupMemberList(groupNo);
+			UserVO leaderVO = groupService.readLeaderInfo(groupVO.getGroupLeader());
+			
+			model.addAttribute("groupVO", groupVO);
+			model.addAttribute("memberList", memberList);
+			model.addAttribute("leaderVO", leaderVO);
+			
+		} catch (Exception e) {
+			logger.info("/group/view 오류");
 		}
 	}
 }
