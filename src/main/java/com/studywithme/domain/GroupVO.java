@@ -38,10 +38,14 @@ public class GroupVO {
 		return groupExplain;
 	}
 
+	public String getReplGroupExplain() {
+		return groupExplain.replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>").replace(" ", "&nbsp;");
+	}
+	
 	public void setGroupExplain(String groupExplain) {
 		this.groupExplain = groupExplain;
 	}
-
+	
 	public Date getGroupCreateDate() {
 		return groupCreateDate;
 	}
