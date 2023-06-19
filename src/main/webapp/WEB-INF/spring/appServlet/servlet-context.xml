@@ -48,6 +48,7 @@
 			<mapping path="/study/applyView"/>
 			<mapping path="/study/applyPass"/>
 			<mapping path="/study/applyFail"/>
+			<mapping path="/group/**"/>
 			<beans:ref bean="loginCheckInterceptor"/>
 		</interceptor>
 	</interceptors>
