@@ -13,4 +13,14 @@
 		values (#{groupNo}, #{userId}, #{userName}, #{userGender}, #{userCallNumber})
 	</insert>
 	
+	<select id="myGroupList" resultType="com.studywithme.domain.GroupVO">
+		select groupNo, groupName, groupLeader, groupCreateDate 
+		  from group_info
+		  where groupLeader = #{userId} 
+		     or groupNo in (select groupNo
+		                     from group_member
+		                     where userId = #{userId})
+		  order by groupCreateDate;
+	</select>
+	
 </mapper>

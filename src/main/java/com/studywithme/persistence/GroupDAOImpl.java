@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.studywithme.domain.GroupDTO;
+import com.studywithme.domain.GroupVO;
 import com.studywithme.domain.MemberDTO;
 
 @Repository
@@ -29,5 +30,11 @@ public class GroupDAOImpl implements GroupDAO {
 		for (MemberDTO dto : memberList) {
 			sqlSession.insert(NAMESPACE + ".createMember", dto);
 		}
+	}
+	
+	@Override
+	public List<GroupVO> myGroupList(String userId) throws Exception {
+		// 나의 스터디 그룹 리스트 조회
+		return sqlSession.selectList(NAMESPACE + ".myGroupList", userId);
 	}
 }
