@@ -20,7 +20,20 @@
 		     or groupNo in (select groupNo
 		                     from group_member
 		                     where userId = #{userId})
-		  order by groupCreateDate;
+		  order by groupCreateDate
+	</select>
+	
+	<select id="myGroupMemberCountList" resultType="com.studywithme.domain.GroupMemberCountVO">
+		select a.groupNo, ifnull(cnt, 0) as groupMemberCount
+		  from (select groupNo from group_info where groupLeader = #{userId}
+		        union
+		  	    select groupNo from group_member where userId = #{userId}) as a 
+		  left join (select groupNo, count(*) as cnt from group_member 
+		 	   	       where groupNo in (select groupNo from group_info where groupLeader = #{userId}
+		 				      			 union
+		 							     select groupNo from group_member where userId = #{userId})
+		 			   group by groupNo) as b
+		  on a.groupNo = b.groupNo
 	</select>
 	
 </mapper>

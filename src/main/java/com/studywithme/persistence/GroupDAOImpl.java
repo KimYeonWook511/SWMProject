@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.studywithme.domain.GroupDTO;
+import com.studywithme.domain.GroupMemberCountVO;
 import com.studywithme.domain.GroupVO;
 import com.studywithme.domain.MemberDTO;
 
@@ -36,5 +37,11 @@ public class GroupDAOImpl implements GroupDAO {
 	public List<GroupVO> myGroupList(String userId) throws Exception {
 		// 나의 스터디 그룹 리스트 조회
 		return sqlSession.selectList(NAMESPACE + ".myGroupList", userId);
+	}
+	
+	@Override
+	public List<GroupMemberCountVO> myGroupMemeberCountList(String userId) throws Exception {
+		// 나의 스터디 그룹 멤버 수 조회
+		return sqlSession.selectList(NAMESPACE + ".myGroupMemberCountList", userId);
 	}
 }

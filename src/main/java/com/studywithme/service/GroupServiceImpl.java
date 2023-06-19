@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.studywithme.domain.GroupDTO;
+import com.studywithme.domain.GroupMemberCountVO;
 import com.studywithme.domain.GroupVO;
 import com.studywithme.domain.MemberDTO;
 import com.studywithme.persistence.GroupDAO;
@@ -33,5 +34,11 @@ public class GroupServiceImpl implements GroupService {
 	public List<GroupVO> myGroupList(String userId) throws Exception {
 		// 나의 스터디 그룹 리스트 조회
 		return groupDAO.myGroupList(userId);
+	}
+	
+	@Override
+	public List<GroupMemberCountVO> myGroupMemeberCount(String userId) throws Exception {
+		// 나의 스터디 그룹 멤버 수 조회
+		return groupDAO.myGroupMemeberCountList(userId);
 	}
 }
