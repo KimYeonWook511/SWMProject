@@ -391,7 +391,7 @@ public class StudyController {
 	}
 	
 	@RequestMapping(value = "/registerGroup", method = RequestMethod.POST)
-	public void registerGroupPOST(int studyNo, GroupDTO groupDTO, HttpSession session) {
+	public void registerGroupPOST(int studyNo, GroupDTO groupDTO, HttpSession session, HttpServletResponse response) {
 		logger.info("registerGroupPOST 실행");
 		
 		UserVO userVO = (UserVO)session.getAttribute("loginVO");
@@ -428,6 +428,16 @@ public class StudyController {
 		} catch (Exception e) {
 			// 스터디 그룹 등록 중 오류
 			logger.info("registerGroup 중 오류");
+		}
+		
+		try {
+			PrintWriter out = response.getWriter();
+			out.println("<script>window.close();opener.parent.location.reload();</script>");
+			out.flush();
+			
+		} catch (Exception e) {
+			// 스크립트 오류
+			logger.info("PrintWriter 오류");
 		}
 	}
 }
