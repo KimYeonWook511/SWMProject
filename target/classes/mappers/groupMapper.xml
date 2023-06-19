@@ -44,4 +44,10 @@
 		select * from group_member where groupNo = #{groupNo}
 	</select>
 		
+	<select id="readLeaderInfo" resultType="com.studywithme.domain.UserVO">
+		select userId, userName, userGender, userCallNumber
+		  from user_info
+		  where userId = #{leaderId}
+	</select>
+		
 </mapper>
