@@ -42,7 +42,7 @@
 					<table class="info-table">
 						<tr>
 							<th class="study_info_th">스터디 내용</th>
-							<td>${studyVO.getReplStudyContent() }</td>
+							<td style="word-wrap: break-word;">${studyVO.getReplStudyContent() }</td>
 						</tr>
 					</table>
 					<c:if test="${loginVO.userId.equals(studyVO.studyWriter) || loginVO.userAuthority.equals('admin')}">
