@@ -14,6 +14,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/main.css">
 <style>
 	.navbar {
 		margin-bottom: 0px;
@@ -22,10 +23,32 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/layout/navbar.jsp" flush="false"/>
-	세션확인--------------------------<br>
-	userId : ${loginVO.userId }<br>
-	userName : ${loginVO.userName }<br>
-	userSignDate : ${loginVO.userSignDate }<br>
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 1530px; height: 600px;">
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active">
+			<li data-target="#myCarousel" data-slide-to="1">
+		</ol>
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="/resources/mainImg/1.jpg" style="width: 1530px; height: 600px;">
+				<div class="myCarouselTitle">
+					<span class="myCarouselTitle-inner">Welcome Study With Me</span>
+				</div>
+			</div>
+			<div class="item">
+				<img src="/resources/mainImg/2.jpg" style="width: 1530px; height: 600px;">
+				<div class="myCarouselTitle">
+					<span class="myCarouselTitle-inner">Welcome Study With Me</span>
+				</div>
+			</div>
+		</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div>
 </body>
 <script>
 	if ('${joinResult}' == 'success') {
