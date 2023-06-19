@@ -58,6 +58,7 @@
 			<mapping path="/study/modify"/>
 			<mapping path="/study/delete"/>
 			<mapping path="/study/applyList"/>
+			<mapping path="/study/registerGroup"/>
 			<beans:ref bean="studyInterceptor"/>
 		</interceptor>
 	</interceptors>
