@@ -54,7 +54,6 @@
 		<div class="empty_table"><div class="empty_table_inner">합격자 존재하지 않음</div></div>
 	</c:if>
 	<c:if test="${!applyPassList.isEmpty() }">
-		<br>
 		<table class="table table-bordered">
 			<tr>
 				<th style="width: 150px">스터디 번호</th>
