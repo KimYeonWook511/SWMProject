@@ -82,7 +82,7 @@
 		});
 		
 		function popup(groupNo) {
-			window.open("/group/groupView?groupNo=" + groupNo, "스터디 그룹 정보", "width=500,height=590,location=no,status=no,scrollbars=yes");
+			window.open("/group/view?groupNo=" + groupNo, "스터디 그룹 정보", "width=500,height=590,location=no,status=no,scrollbars=yes");
 		}
 	</script>
 	</c:if>
