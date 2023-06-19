@@ -10,6 +10,7 @@ import com.studywithme.domain.GroupDTO;
 import com.studywithme.domain.GroupMemberCountVO;
 import com.studywithme.domain.GroupVO;
 import com.studywithme.domain.MemberDTO;
+import com.studywithme.domain.MemberVO;
 import com.studywithme.persistence.GroupDAO;
 
 @Service
@@ -40,5 +41,17 @@ public class GroupServiceImpl implements GroupService {
 	public List<GroupMemberCountVO> myGroupMemeberCount(String userId) throws Exception {
 		// 나의 스터디 그룹 멤버 수 조회
 		return groupDAO.myGroupMemeberCountList(userId);
+	}
+	
+	@Override
+	public GroupVO readGroupInfo(int groupNo) throws Exception {
+		// 스터디 그룹 정보 조회
+		return groupDAO.readGroupInfo(groupNo);
+	}
+	
+	@Override
+	public List<MemberVO> readGroupMemberList(int groupNo) throws Exception {
+		// 스터디 그룹 멤버 리스트 조회
+		return groupDAO.readGroupMemberList(groupNo);
 	}
 }

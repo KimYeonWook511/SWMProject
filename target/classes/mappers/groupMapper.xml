@@ -36,4 +36,12 @@
 		  on a.groupNo = b.groupNo
 	</select>
 	
+	<select id="readGroupInfo" resultType="com.studywithme.domain.GroupVO">
+		select * from group_info where groupNo = #{groupNo}
+	</select>
+	
+	<select id="readGroupMemberList" resultType="com.studywithme.domain.MemberVO">
+		select * from group_member where groupNo = #{groupNo}
+	</select>
+		
 </mapper>

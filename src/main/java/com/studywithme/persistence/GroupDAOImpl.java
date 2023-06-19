@@ -11,6 +11,7 @@ import com.studywithme.domain.GroupDTO;
 import com.studywithme.domain.GroupMemberCountVO;
 import com.studywithme.domain.GroupVO;
 import com.studywithme.domain.MemberDTO;
+import com.studywithme.domain.MemberVO;
 
 @Repository
 public class GroupDAOImpl implements GroupDAO {
@@ -43,5 +44,17 @@ public class GroupDAOImpl implements GroupDAO {
 	public List<GroupMemberCountVO> myGroupMemeberCountList(String userId) throws Exception {
 		// 나의 스터디 그룹 멤버 수 조회
 		return sqlSession.selectList(NAMESPACE + ".myGroupMemberCountList", userId);
+	}
+	
+	@Override
+	public GroupVO readGroupInfo(int groupNo) throws Exception {
+		// 스터디 그룹 정보 조회
+		return sqlSession.selectOne(NAMESPACE + ".readGroupInfo", groupNo);
+	}
+	
+	@Override
+	public List<MemberVO> readGroupMemberList(int groupNo) throws Exception {
+		// 스터디 그룹 멤버 리스트 조회
+		return sqlSession.selectList(NAMESPACE + ".readGroupMemberList", groupNo);
 	}
 }
