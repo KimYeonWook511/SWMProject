@@ -41,6 +41,16 @@
 						</c:if>
 					</ul>
 				</li>
+				<c:if test="${not empty loginVO}">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							나의 스터디 그룹
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="/group/list">그룹 리스트</a></li>
+						</ul>
+					</li>
+				</c:if>
 				<c:if test="${loginVO.userAuthority == 'admin' }">
 					<li><a href="/">관리자 창</a></li>
 				</c:if>
